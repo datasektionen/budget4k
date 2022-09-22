@@ -1,0 +1,34 @@
+version: "3.9"
+
+services:
+  backend:
+    image: bitnami/express
+    depends_on:
+      - db
+
+  db:
+    build:
+      context: database
+      dockerfile: db.Dockerfile
+    healthcheck:
+      test: ["CMD", "pg_isready", "-q", "-d", "postgres", "-U", "root"]
+      timeout: 45s
+      interval: 10s
+      retries: 10
+    restart: always
+    ports:
+      - "5432:5432"
+    networks:
+      - budget4k
+    volumes:
+      - budget-db:/var/lib/postgresql/data
+    env_file: .env
+    environment:
+      POSTGRES_USER: $PG_ROOT_USER
+      POSTGRES_PASSWORD: $PG_ROOT_PASS
+
+volumes:
+  budget-db:
+
+networks:
+  budget4k:
