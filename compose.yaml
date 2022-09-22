@@ -2,9 +2,17 @@ version: "3.9"
 
 services:
   backend:
-    image: bitnami/express
+    build:
+      context: backend
+      dockerfile: backend.Dockerfile
     depends_on:
       - db
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./backend:/backend
+      - /backend/node_modules
+      - /backend/dist
 
   db:
     build:
