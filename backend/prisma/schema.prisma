@@ -10,6 +10,43 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model ResultLine {
+model Committee {
+  committeeId Int          @unique @default(autoincrement()) @map("committee_id")
+  name        String
+  comment     String?
+  startDate   DateTime     @map("start_date")
+  endDate     DateTime     @map("end_date")
+  darken      Boolean      @default(false)
+  costCenters CostCenter[]
 
+  @@map("committee")
+}
+
+model CostCenter {
+  costCenterId Int          @unique @default(autoincrement()) @map("cost_center_id")
+  name         String
+  comment      String?
+  darken       Boolean      @default(false)
+  committee    Committee?   @relation(fields: [committeeId], references: [committeeId])
+  committeeId  Int?         @map("committee_id")
+  budgetLines  BudgetLine[]
+
+  @@map("cost_center")
+}
+
+model BudgetLine {
+  budgetLineId Int         @unique @default(autoincrement()) @map("budget_line_id")
+  name         String
+  income       Decimal
+  expense      Decimal
+  comment      String?
+  valid_from   DateTime
+  valid_to     DateTime
+  edit_date    DateTime    @default(now())
+  edited_by    String
+  darken       Boolean     @default(false)
+  costCenter   CostCenter? @relation(fields: [costCenterId], references: [costCenterId])
+  costCenterId Int?        @map("cost_center_id")
+
+  @@map("budget_lines")
 }
