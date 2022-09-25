@@ -1,10 +1,10 @@
 import { Router } from "express";
 import {
-  postCommittee,
-  deleteCommittee,
-  getCommittees,
-  getCommittee,
-  putCommittee,
+    postCommittee,
+    deleteCommittee,
+    getCommittees,
+    getCommittee,
+    putCommittee,
 } from "../controllers/committee.controller";
 
 const committeeRouter = Router();

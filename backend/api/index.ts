@@ -6,9 +6,9 @@ import costCenterRouter from "./routes/cost-center.routes";
 const api = express();
 
 api.get("/", (req: express.Request, res: express.Response) => {
-  res.send({
-    message: "Hello from the API",
-  });
+    res.send({
+        message: "Hello from the API",
+    });
 });
 
 api.use("/committee", committeeRouter);

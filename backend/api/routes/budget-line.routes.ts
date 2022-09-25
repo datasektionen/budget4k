@@ -1,9 +1,9 @@
 import { Router } from "express";
 import {
-  deleteBudgetLine,
-  getBudgetLine,
-  postBudgetLine,
-  putBudgetLine,
+    deleteBudgetLine,
+    getBudgetLine,
+    postBudgetLine,
+    putBudgetLine,
 } from "../controllers/budget-line.controller";
 
 const budgetLineRouter = Router();

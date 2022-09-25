@@ -7,5 +7,5 @@ const port = 3000;
 app.use("/v1", api);
 
 app.listen(port, () => {
-  console.log(`Listening at http://localhost:${port}`);
+    console.log(`Listening at http://localhost:${port}`);
 });

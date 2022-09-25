@@ -1,9 +1,9 @@
 import { Router } from "express";
 import {
-  deleteCostCenter,
-  getCostCenter,
-  postCostCenter,
-  putCostCenter,
+    deleteCostCenter,
+    getCostCenter,
+    postCostCenter,
+    putCostCenter,
 } from "../controllers/cost-center.controller";
 
 const costCenterRouter = Router();

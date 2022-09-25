@@ -18,28 +18,28 @@ import { StatusCodes } from "http-status-codes";
  * @param status the HTTP status code
  */
 export const errorResponse = (
-  req: express.Request,
-  res: express.Response,
-  detail: string | any,
-  status: number
+    req: express.Request,
+    res: express.Response,
+    detail: string | any,
+    status: number
 ) => {
-  let detailedMessage = "";
+    let detailedMessage = "";
 
-  // Do not send stack traces in production
-  if (typeof detail === "object") {
-    if (process.env.NODE_ENV === "development")
-      detailedMessage = detail.toString();
-  } else {
-    detailedMessage = detail;
-  }
+    // Do not send stack traces in production
+    if (typeof detail === "object") {
+        if (process.env.NODE_ENV === "development")
+            detailedMessage = detail.toString();
+    } else {
+        detailedMessage = detail;
+    }
 
-  return res.status(status).json({
-    detail: detailedMessage,
-    status,
-    timestamp: new Date(),
-    // Sounds like "originalUrl" would be the complete url, but it is in fact only the complete path
-    path: req.originalUrl,
-  });
+    return res.status(status).json({
+        detail: detailedMessage,
+        status,
+        timestamp: new Date(),
+        // Sounds like "originalUrl" would be the complete url, but it is in fact only the complete path
+        path: req.originalUrl
+    });
 };
 
 /**
@@ -65,17 +65,17 @@ export const errorResponse = (
  * @param status the HTTP status code
  */
 export const successResponse = (
-  req: express.Request,
-  res: express.Response,
-  data: any,
-  detail = "",
-  status: number = StatusCodes.OK
+    req: express.Request,
+    res: express.Response,
+    data: any,
+    detail = "",
+    status: number = StatusCodes.OK
 ) => {
-  return res.status(status).json({
-    detail,
-    data,
-    timestamp: new Date(),
-    status,
-    path: req.originalUrl,
-  });
+    return res.status(status).json({
+        detail,
+        data,
+        timestamp: new Date(),
+        status,
+        path: req.originalUrl
+    });
 };
