@@ -1,12 +1,11 @@
 import express from "express";
+import api from "./api";
 
 const app = express();
 const port = 3000;
 
-app.get("/", (req: any, res: any) => {
-  res.send("Hello World!");
-});
+app.use("/v1", api);
 
 app.listen(port, () => {
-  console.log(`Example app listening at http://localhost:${port}`);
+  console.log(`Listening at http://localhost:${port}`);
 });

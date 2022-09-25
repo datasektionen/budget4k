@@ -1,0 +1,60 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Budget {
+  budgetId   Int         @unique @default(autoincrement()) @map("budget_id")
+  year       Int
+  active     Boolean
+  committees Committee[]
+
+  @@map("budget")
+}
+
+model Committee {
+  committeeId Int          @unique @default(autoincrement()) @map("committee_id")
+  name        String
+  comment     String?
+  budgetId    Int?         @map("budget_id")
+  budget      Budget?      @relation(fields: [budgetId], references: [budgetId])
+  costCenters CostCenter[]
+
+  @@map("committee")
+}
+
+model CostCenter {
+  costCenterId Int          @unique @default(autoincrement()) @map("cost_center_id")
+  name         String
+  comment      String?
+  darken       Boolean      @default(false)
+  committeeId  Int?         @map("committee_id")
+  committee    Committee?   @relation(fields: [committeeId], references: [committeeId])
+  budgetLines  BudgetLine[]
+
+  @@map("cost_center")
+}
+
+model BudgetLine {
+  budgetLineId Int         @unique @default(autoincrement()) @map("budget_line_id")
+  name         String
+  income       Decimal
+  expense      Decimal
+  comment      String?
+  valid_from   DateTime
+  valid_to     DateTime
+  edit_date    DateTime    @default(now())
+  edited_by    String
+  darken       Boolean     @default(false)
+  costCenterId Int?        @map("cost_center_id")
+  costCenter   CostCenter? @relation(fields: [costCenterId], references: [costCenterId])
+
+  @@map("budget_lines")
+}
