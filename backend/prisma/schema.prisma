@@ -10,13 +10,21 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+model Budget {
+  budgetId   Int         @unique @default(autoincrement()) @map("budget_id")
+  year       Int
+  active     Boolean
+  committees Committee[]
+
+  @@map("budget")
+}
+
 model Committee {
   committeeId Int          @unique @default(autoincrement()) @map("committee_id")
   name        String
   comment     String?
-  startDate   DateTime     @map("start_date")
-  endDate     DateTime     @map("end_date")
-  darken      Boolean      @default(false)
+  budgetId    Int?         @map("budget_id")
+  budget      Budget?      @relation(fields: [budgetId], references: [budgetId])
   costCenters CostCenter[]
 
   @@map("committee")
@@ -27,8 +35,8 @@ model CostCenter {
   name         String
   comment      String?
   darken       Boolean      @default(false)
-  committee    Committee?   @relation(fields: [committeeId], references: [committeeId])
   committeeId  Int?         @map("committee_id")
+  committee    Committee?   @relation(fields: [committeeId], references: [committeeId])
   budgetLines  BudgetLine[]
 
   @@map("cost_center")
@@ -45,8 +53,8 @@ model BudgetLine {
   edit_date    DateTime    @default(now())
   edited_by    String
   darken       Boolean     @default(false)
-  costCenter   CostCenter? @relation(fields: [costCenterId], references: [costCenterId])
   costCenterId Int?        @map("cost_center_id")
+  costCenter   CostCenter? @relation(fields: [costCenterId], references: [costCenterId])
 
   @@map("budget_lines")
 }

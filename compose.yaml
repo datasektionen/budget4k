@@ -7,6 +7,8 @@ services:
       dockerfile: backend.Dockerfile
     depends_on:
       - db
+    networks:
+      - budget4k
     ports:
       - "3000:3000"
     volumes:
