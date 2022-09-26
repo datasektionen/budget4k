@@ -28,7 +28,7 @@ export const errorResponse = (
     // Do not send stack traces in production
     if (typeof detail === "object") {
         if (process.env.NODE_ENV === "development")
-            detailedMessage = detail.toString();
+            detailedMessage = detail?.toString() ?? "No details available.";
     } else {
         detailedMessage = detail;
     }
@@ -67,7 +67,7 @@ export const errorResponse = (
 export const successResponse = (
     req: express.Request,
     res: express.Response,
-    data: any,
+    data: unknown,
     detail = "",
     status: number = StatusCodes.OK
 ) => {
