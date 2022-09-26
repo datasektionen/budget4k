@@ -1,8 +1,18 @@
 import express from "express";
 import api from "./api";
+import swaggerUi from "swagger-ui-express";
+import swaggerJSDoc from "swagger-jsdoc";
+import options from "./openapi/options";
 
 const app = express();
 const port = 3000;
+
+const swaggerSpec = swaggerJSDoc(options);
+app.use(
+    "/api-docs",
+    swaggerUi.serve,
+    swaggerUi.setup(swaggerSpec, { customSiteTitle: "budget4k API" })
+);
 
 app.use("/v1", api);
 

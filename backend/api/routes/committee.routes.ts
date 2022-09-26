@@ -4,12 +4,24 @@ import {
     deleteCommittee,
     getCommittees,
     getCommittee,
-    putCommittee,
+    putCommittee
 } from "../controllers/committee.controller";
 
 const committeeRouter = Router();
 
+/**
+ * @openapi
+ * /v1/committees:
+ *  get:
+ *      summary: Returns all the committees
+ *      responses:
+ *          200:
+ *              A list of the committees
+ *      tags:
+ *          - Committee
+ */
 committeeRouter.get("/", getCommittees);
+
 committeeRouter.post("/", postCommittee);
 
 committeeRouter.get("/:committeeId(\\d+)", getCommittee);
