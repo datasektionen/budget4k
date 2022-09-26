@@ -8,7 +8,8 @@
         "start": "tsc && node ./dist/index.js",
         "build": "tsc",
         "lint": "eslint . --ext .ts",
-        "lint:fix": "eslint . --ext .ts --fix"
+        "lint:fix": "eslint . --ext .ts --fix",
+        "seed": "NODE_ENV=prisma_seed ts-node-dev prisma/seed.ts"
     },
     "dependencies": {
         "@prisma/client": "^4.3.1",

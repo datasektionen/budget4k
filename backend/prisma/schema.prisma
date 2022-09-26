@@ -48,13 +48,13 @@ model BudgetLine {
   income       Decimal
   expense      Decimal
   comment      String?
-  valid_from   DateTime
-  valid_to     DateTime
-  edit_date    DateTime    @default(now())
-  edited_by    String
+  validFrom    DateTime    @map("valid_from")
+  validTo      DateTime    @map("valid_to")
+  editDate     DateTime?   @default(now()) @map("edit_date")
+  editedBy     String?     @map("edited_by")
   darken       Boolean     @default(false)
   costCenterId Int?        @map("cost_center_id")
   costCenter   CostCenter? @relation(fields: [costCenterId], references: [costCenterId])
 
-  @@map("budget_lines")
+  @@map("budget_line")
 }
