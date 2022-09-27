@@ -1,13 +1,32 @@
-import { Budget, BudgetLine, Committee, CostCenter } from "@prisma/client";
-
-export type BudgetCommittees = Budget & {
-    committees: CommitteeCostCenters[];
+export type Group = {
+    groupId: string;
+    name: string;
+    comment?: string;
+    budgets?: Budget[];
 };
 
-export type CommitteeCostCenters = Committee & {
-    costCenters: CostCenterBudgetLines[];
+export type Budget = {
+    year: number;
+    active?: boolean;
+    comment?: string;
+    costCenters?: CostCenter[];
 };
 
-export type CostCenterBudgetLines = CostCenter & {
-    budgetLines: BudgetLine[];
+export type CostCenter = {
+    name: string;
+    comment?: string;
+    darken?: boolean;
+    budgetLines?: BudgetLine[];
+};
+
+export type BudgetLine = {
+    name: string;
+    income?: number;
+    expense?: number;
+    comment?: string;
+    validFrom?: Date;
+    validTo?: Date;
+    editDate?: Date;
+    editedBy?: string;
+    darken?: boolean;
 };
