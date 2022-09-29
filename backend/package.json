@@ -9,7 +9,8 @@
         "build": "tsc",
         "lint": "eslint . --ext .ts",
         "lint:fix": "eslint . --ext .ts --fix",
-        "seed": "NODE_ENV=prisma_seed ts-node-dev prisma/seed.ts"
+        "db:seed": "NODE_ENV=db_seed ts-node-dev prisma/seed.ts",
+        "db:clear": "NODE_ENV=db_clear ts-node-dev util/clear-db.ts"
     },
     "dependencies": {
         "@prisma/client": "^4.3.1",

@@ -1,6 +1,37 @@
-import { Group } from "types/prisma";
+export type GroupSeed = {
+    groupId: string;
+    name: string;
+    comment?: string;
+    budgets?: BudgetSeed[];
+};
 
-export const budgets: Group[] = [
+export type BudgetSeed = {
+    year: number;
+    active?: boolean;
+    comment?: string;
+    costCenters?: CostCenterSeed[];
+};
+
+export type CostCenterSeed = {
+    name: string;
+    comment?: string;
+    budgetLines?: BudgetLineSeed[];
+    darken?: boolean;
+};
+
+export type BudgetLineSeed = {
+    name: string;
+    comment?: string;
+    expense?: number;
+    income?: number;
+    validFrom?: Date;
+    validTo?: Date;
+    editDate?: Date;
+    editedBy?: string;
+    darken?: boolean;
+};
+
+export const budgets: GroupSeed[] = [
     {
         groupId: "baknamnden",
         name: "Baknämnden",

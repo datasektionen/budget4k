@@ -1,10 +1,15 @@
-import { budgets } from "./data";
-import { Budget, BudgetLine, Group, CostCenter } from "types/prisma";
 import { PrismaClient } from "@prisma/client";
+import {
+    BudgetLineSeed,
+    budgets,
+    BudgetSeed,
+    CostCenterSeed,
+    GroupSeed
+} from "./data";
 
 const prisma = new PrismaClient();
 
-const seedGroups = (groups: Group[]) => {
+const seedGroups = (groups: GroupSeed[]) => {
     groups.map(async (group) => {
         await prisma.group.create({
             data: {
@@ -20,7 +25,7 @@ const seedGroups = (groups: Group[]) => {
     });
 };
 
-const seedBudget = (budgets: Budget[], groupId: string) => {
+const seedBudget = (budgets: BudgetSeed[], groupId: string) => {
     budgets.map(async (budget) => {
         const { budgetId } = await prisma.budget.create({
             data: {
@@ -37,7 +42,7 @@ const seedBudget = (budgets: Budget[], groupId: string) => {
     });
 };
 
-const seedCostCenters = (costCenters: CostCenter[], budgetId: number) => {
+const seedCostCenters = (costCenters: CostCenterSeed[], budgetId: number) => {
     costCenters.map(async (costCenter) => {
         const { costCenterId } = await prisma.costCenter.create({
             data: {
@@ -55,33 +60,31 @@ const seedCostCenters = (costCenters: CostCenter[], budgetId: number) => {
 };
 
 const seedBudgetLines = async (
-    budgetLines: BudgetLine[],
+    budgetLines: BudgetLineSeed[],
     costCenterId: number
 ) => {
-    await Promise.all([
-        budgetLines.map((budgetLine) => {
-            prisma.budgetLine.create({
-                data: {
-                    name: budgetLine.name,
-                    income: budgetLine.income ?? 0,
-                    expense: budgetLine.expense ?? 0,
-                    comment: budgetLine.comment,
-                    validFrom: budgetLine.validFrom
-                        ? new Date(budgetLine.validFrom)
-                        : undefined,
-                    validTo: budgetLine.validTo
-                        ? new Date(budgetLine.validTo)
-                        : undefined,
-                    editDate: budgetLine.editDate
-                        ? new Date(budgetLine.editDate)
-                        : undefined,
-                    editedBy: budgetLine.editedBy,
-                    darken: budgetLine.darken ?? false,
-                    costCenterId: costCenterId
-                }
-            });
-        })
-    ]);
+    budgetLines.map(async (budgetLine) => {
+        await prisma.budgetLine.create({
+            data: {
+                name: budgetLine.name,
+                income: budgetLine.income ?? 0,
+                expense: budgetLine.expense ?? 0,
+                comment: budgetLine.comment,
+                validFrom: budgetLine.validFrom
+                    ? new Date(budgetLine.validFrom)
+                    : undefined,
+                validTo: budgetLine.validTo
+                    ? new Date(budgetLine.validTo)
+                    : undefined,
+                editDate: budgetLine.editDate
+                    ? new Date(budgetLine.editDate)
+                    : undefined,
+                editedBy: budgetLine.editedBy,
+                darken: budgetLine.darken ?? false,
+                costCenterId: costCenterId
+            }
+        });
+    });
 };
 
 seedGroups(budgets);

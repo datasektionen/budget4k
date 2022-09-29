@@ -24,7 +24,7 @@ model Budget {
   year        Int
   active      Boolean
   comment     String?
-  groupId     String?      @map("group_id")
+  groupId     String       @map("group_id")
   Group       Group?       @relation(fields: [groupId], references: [groupId])
   costCenters CostCenter[]
 
@@ -36,7 +36,7 @@ model CostCenter {
   name         String
   comment      String?
   darken       Boolean      @default(false)
-  budgetId     Int?         @map("budget_id")
+  budgetId     Int          @map("budget_id")
   Budget       Budget?      @relation(fields: [budgetId], references: [budgetId])
   budgetLines  BudgetLine[]
 
@@ -54,7 +54,7 @@ model BudgetLine {
   editDate     DateTime?   @default(now()) @map("edit_date")
   editedBy     String?     @map("edited_by")
   darken       Boolean     @default(false)
-  costCenterId Int?        @map("cost_center_id")
+  costCenterId Int         @map("cost_center_id")
   costCenter   CostCenter? @relation(fields: [costCenterId], references: [costCenterId])
 
   @@map("budget_line")
