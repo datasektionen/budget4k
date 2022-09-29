@@ -1,4 +1,4 @@
-import express from "express";
+import { Request, Response } from "express";
 import { StatusCodes } from "http-status-codes";
 
 /**
@@ -18,9 +18,9 @@ import { StatusCodes } from "http-status-codes";
  * @param status the HTTP status code
  */
 export const errorResponse = (
-    req: express.Request,
-    res: express.Response,
-    detail: string | any,
+    req: Request,
+    res: Response,
+    detail: string | unknown,
     status: number
 ) => {
     let detailedMessage = "";
@@ -30,7 +30,7 @@ export const errorResponse = (
         if (process.env.NODE_ENV === "development")
             detailedMessage = detail?.toString() ?? "No details available.";
     } else {
-        detailedMessage = detail;
+        detailedMessage = detail as string;
     }
 
     return res.status(status).json({
@@ -65,8 +65,8 @@ export const errorResponse = (
  * @param status the HTTP status code
  */
 export const successResponse = (
-    req: express.Request,
-    res: express.Response,
+    req: Request,
+    res: Response,
     data: unknown,
     detail = "",
     status: number = StatusCodes.OK

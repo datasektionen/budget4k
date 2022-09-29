@@ -1,16 +1,19 @@
 import { Router } from "express";
 import {
     deleteBudgetLine,
-    getBudgetLine,
+    getAllBudgetLines,
+    getBudgetLineById,
     postBudgetLine,
-    putBudgetLine,
+    putBudgetLine
 } from "../controllers/budget-line.controller";
 
 const budgetLineRouter = Router();
 
-budgetLineRouter.get("/:budgetLineId(\\d+)", getBudgetLine);
-budgetLineRouter.post("/:budgetLineId(\\d+)", postBudgetLine);
-budgetLineRouter.put("/:budgetLineId(\\d+)", putBudgetLine);
-budgetLineRouter.delete("/:budgetLineId(\\d+)", deleteBudgetLine);
+budgetLineRouter.get("/", getAllBudgetLines);
+budgetLineRouter.post("/", postBudgetLine);
+
+budgetLineRouter.get("/:budgetId(\\d+)", getBudgetLineById);
+budgetLineRouter.put("/:budgetId(\\d+)", putBudgetLine);
+budgetLineRouter.delete("/:budgetId(\\d+)", deleteBudgetLine);
 
 export default budgetLineRouter;

@@ -1,62 +1,99 @@
+import {
+    createGroup,
+    readAllGroups,
+    readGroupById,
+    removeGroup,
+    updateGroup
+} from "../services/group.service";
 import { Request, Response } from "express";
-import { errorResponse, successResponse } from "../../util/response";
-import { prisma } from "../../lib/prisma";
 import { StatusCodes } from "http-status-codes";
+import { Group } from "../../types/db-types";
+import { errorResponse, successResponse } from "../../util/response";
 
-export const getGroups = async (req: Request, res: Response) => {
-    const data = await prisma.group.findMany();
-
-    return successResponse(
-        req,
-        res,
-        data,
-        "All of the commitees.",
-        StatusCodes.OK
-    );
-};
-
-export const getGroup = async (req: Request, res: Response) => {
-    const groupId = req.params.groupId;
-
-    const data = await prisma.group.findUnique({
-        where: {
-            groupId: groupId
-        },
-        include: {
-            budgets: {
-                include: {
-                    costCenters: true
-                }
-            }
-        }
-    });
-
-    if (!data) {
+export const getAllGroups = async (req: Request, res: Response) => {
+    try {
+        const data = await readAllGroups();
+        return successResponse(req, res, data, "All groups");
+    } catch (error) {
         return errorResponse(
             req,
             res,
-            `No group with id '${groupId}' exists.`,
-            StatusCodes.NOT_FOUND
+            error,
+            StatusCodes.INTERNAL_SERVER_ERROR
         );
     }
+};
 
-    return successResponse(
-        req,
-        res,
-        data,
-        "All of the commitees.",
-        StatusCodes.OK
-    );
+export const getGroupById = async (req: Request, res: Response) => {
+    try {
+        const groupId = req.params.groupId;
+        const data = await readGroupById(groupId);
+        if (data) {
+            return successResponse(
+                req,
+                res,
+                data,
+                `Group with id '${groupId}'`
+            );
+        } else {
+            return errorResponse(
+                req,
+                res,
+                `No group with '${groupId}' exists`,
+                StatusCodes.NOT_FOUND
+            );
+        }
+    } catch (error) {
+        return errorResponse(
+            req,
+            res,
+            error,
+            StatusCodes.INTERNAL_SERVER_ERROR
+        );
+    }
 };
 
 export const postGroup = async (req: Request, res: Response) => {
-    return errorResponse(req, res, "Not implemented. Create group.", 501);
+    try {
+        const group = JSON.parse(req.body.group) as Group;
+        const data = await createGroup(group);
+        return successResponse(req, res, data, "Group created");
+    } catch (error) {
+        return errorResponse(
+            req,
+            res,
+            error,
+            StatusCodes.INTERNAL_SERVER_ERROR
+        );
+    }
 };
 
 export const putGroup = async (req: Request, res: Response) => {
-    return errorResponse(req, res, "Not implemented. Edit group.", 501);
+    try {
+        const group = JSON.parse(req.body.group) as Group;
+        const data = await updateGroup(group);
+        return successResponse(req, res, data, "Group updated");
+    } catch (error) {
+        return errorResponse(
+            req,
+            res,
+            error,
+            StatusCodes.INTERNAL_SERVER_ERROR
+        );
+    }
 };
 
 export const deleteGroup = async (req: Request, res: Response) => {
-    return errorResponse(req, res, "Not implemented. Delete group.", 501);
+    try {
+        const groupId = req.params.groupId;
+        const data = await removeGroup(groupId);
+        return successResponse(req, res, data, "Group deleted");
+    } catch (error) {
+        return errorResponse(
+            req,
+            res,
+            error,
+            StatusCodes.INTERNAL_SERVER_ERROR
+        );
+    }
 };
