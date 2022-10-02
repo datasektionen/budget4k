@@ -1,6 +1,20 @@
 version: "3.9"
 
 services:
+  frontend:
+    build:
+      context: frontend
+      dockerfile: frontend.Dockerfile
+    networks:
+      - budget4k
+    ports:
+      - "5000:3000"
+    volumes:
+      - ./frontend:/frontend
+      - /frontend/node_modules
+      - /frontend/.cache
+      - /frontend/build
+
   backend:
     build:
       context: backend

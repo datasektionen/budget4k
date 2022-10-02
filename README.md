@@ -15,7 +15,7 @@ Hämta `docker compose` [här](https://docs.docker.com/compose/install/).
 För att köra:
 
 ```bash
-docker compose up
+docker compose up # Lägg till --build om den inte funkar.
 ```
 
 För att komma åt databasen ifrån `psql`:
