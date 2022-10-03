@@ -1,15 +1,18 @@
 import { Router } from "express";
 import {
     deleteCostCenter,
-    getCostCenter,
+    getAllCostCenters,
+    getCostCenterById,
     postCostCenter,
-    putCostCenter,
+    putCostCenter
 } from "../controllers/cost-center.controller";
 
 const costCenterRouter = Router();
 
-costCenterRouter.get("/:costCenterId(\\d+)", getCostCenter);
-costCenterRouter.post("/:costCenterId(\\d+)", postCostCenter);
+costCenterRouter.get("/", getAllCostCenters);
+costCenterRouter.post("/", postCostCenter);
+
+costCenterRouter.get("/:costCenterId(\\d+)", getCostCenterById);
 costCenterRouter.put("/:costCenterId(\\d+)", putCostCenter);
 costCenterRouter.delete("/:costCenterId(\\d+)", deleteCostCenter);
 

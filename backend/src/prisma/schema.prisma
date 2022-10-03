@@ -10,24 +10,26 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model Budget {
-  budgetId   Int         @unique @default(autoincrement()) @map("budget_id")
-  year       Int
-  active     Boolean
-  committees Committee[]
+model Group {
+  groupId String   @unique @map("group_id")
+  name    String
+  comment String?
+  budgets Budget[]
+  project Boolean  @default(false)
 
-  @@map("budget")
+  @@map("group")
 }
 
-model Committee {
-  committeeId Int          @unique @default(autoincrement()) @map("committee_id")
-  name        String
+model Budget {
+  budgetId    Int          @unique @default(autoincrement()) @map("budget_id")
+  year        Int
+  active      Boolean
   comment     String?
-  budgetId    Int?         @map("budget_id")
-  budget      Budget?      @relation(fields: [budgetId], references: [budgetId])
+  groupId     String       @map("group_id")
+  Group       Group?       @relation(fields: [groupId], references: [groupId])
   costCenters CostCenter[]
 
-  @@map("committee")
+  @@map("budget")
 }
 
 model CostCenter {
@@ -35,8 +37,8 @@ model CostCenter {
   name         String
   comment      String?
   darken       Boolean      @default(false)
-  committeeId  Int?         @map("committee_id")
-  committee    Committee?   @relation(fields: [committeeId], references: [committeeId])
+  budgetId     Int          @map("budget_id")
+  Budget       Budget?      @relation(fields: [budgetId], references: [budgetId])
   budgetLines  BudgetLine[]
 
   @@map("cost_center")
@@ -45,15 +47,15 @@ model CostCenter {
 model BudgetLine {
   budgetLineId Int         @unique @default(autoincrement()) @map("budget_line_id")
   name         String
-  income       Decimal
-  expense      Decimal
+  income       Decimal     @default(0)
+  expense      Decimal     @default(0)
   comment      String?
-  validFrom    DateTime    @map("valid_from")
-  validTo      DateTime    @map("valid_to")
+  validFrom    DateTime?   @map("valid_from")
+  validTo      DateTime?   @map("valid_to")
   editDate     DateTime?   @default(now()) @map("edit_date")
   editedBy     String?     @map("edited_by")
   darken       Boolean     @default(false)
-  costCenterId Int?        @map("cost_center_id")
+  costCenterId Int         @map("cost_center_id")
   costCenter   CostCenter? @relation(fields: [costCenterId], references: [costCenterId])
 
   @@map("budget_line")
