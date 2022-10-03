@@ -83,8 +83,7 @@ export const budgets: GroupSeed[] = [
                         name: "Allmänt",
                         budgetLines: [
                             {
-                                name: "Apple Developer Program",
-                                expense: 0
+                                name: "Apple Developer Program"
                             },
                             {
                                 name: "Återanvändbara festatteraljer",

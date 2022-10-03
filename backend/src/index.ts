@@ -1,8 +1,8 @@
-import express from "express";
 import api from "./api";
-import swaggerUi from "swagger-ui-express";
-import swaggerJSDoc from "swagger-jsdoc";
+import express from "express";
 import options from "./openapi/options";
+import swaggerJSDoc from "swagger-jsdoc";
+import swaggerUi from "swagger-ui-express";
 
 const app = express();
 const port = 3000;
