@@ -4,7 +4,7 @@ import {
     CostCenter as PrismaCostCenter,
     Group as PrismaGroup
 } from "@prisma/client";
-import { Budget, BudgetLine, CostCenter, Group } from "./db-types";
+import { Budget, BudgetLine, CostCenter, Group } from "src/types";
 
 export const toGroup = (group: PrismaGroup): Group => {
     return {

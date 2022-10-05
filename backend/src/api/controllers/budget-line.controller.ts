@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import { StatusCodes } from "http-status-codes";
-import { BudgetLine } from "../../types/db-types";
+import { BudgetLine } from "src/types/db-types";
 import { errorResponse, successResponse } from "../../util/response";
 import {
     createBudgetLine,

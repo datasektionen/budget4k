@@ -1,6 +1,6 @@
-import { BudgetLine } from "../../types/db-types";
-import { toBudgetLine } from "../../types/type-util";
-import { prisma } from "../../lib/prisma";
+import { BudgetLine } from "src/types/db-types";
+import { toBudgetLine } from "../..//util";
+import { prisma } from "../..//lib/prisma";
 
 export const readAllBudgetLines = async (): Promise<BudgetLine[]> => {
     const budgetLines = await prisma.budgetLine.findMany();

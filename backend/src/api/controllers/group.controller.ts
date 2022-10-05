@@ -7,7 +7,7 @@ import {
 } from "../services/group.service";
 import { Request, Response } from "express";
 import { StatusCodes } from "http-status-codes";
-import { Group } from "../../types/db-types";
+import { Group } from "src/types/db-types";
 import { errorResponse, successResponse } from "../../util/response";
 
 export const getAllGroups = async (req: Request, res: Response) => {

@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import { StatusCodes } from "http-status-codes";
-import { CostCenter } from "../../types/db-types";
+import { CostCenter } from "src/types/db-types";
 import { errorResponse, successResponse } from "../../util/response";
 import {
     createCostCenter,

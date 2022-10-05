@@ -1,5 +1,5 @@
-import { Group } from "../../types/db-types";
-import { toGroup } from "../../types/type-util";
+import { Group } from "src/types/db-types";
+import { toGroup } from "../..//util";
 import { prisma } from "../../lib/prisma";
 
 export const readAllGroups = async (): Promise<Group[]> => {

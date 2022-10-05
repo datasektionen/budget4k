@@ -2,7 +2,9 @@ FROM node:18
 
 WORKDIR /backend
 
-COPY package*.json yarn.lock ./
+COPY package*.json yarn.lock .yarnrc.yml ./
+
+COPY .yarn/ .yarn/
 
 RUN yarn install
 

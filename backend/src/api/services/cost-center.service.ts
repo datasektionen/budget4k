@@ -1,5 +1,5 @@
-import { CostCenter } from "../../types/db-types";
-import { toCostCenter } from "../../types/type-util";
+import { CostCenter } from "src/types/db-types";
+import { toCostCenter } from "../../util";
 import { prisma } from "../../lib/prisma";
 
 export const readAllCostCenters = async (): Promise<CostCenter[]> => {
