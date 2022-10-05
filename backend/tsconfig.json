@@ -1,38 +1,38 @@
 {
-    "ts-node": {
-        "transpileOnly": true,
-        "require": ["typescript-transform-paths/register"],
-        "files": true
+  "ts-node": {
+    "transpileOnly": true,
+    "require": ["typescript-transform-paths/register"],
+    "files": true
+  },
+  "compilerOptions": {
+    /* Visit https://aka.ms/tsconfig to read more about this file */
+    "declaration": true,
+    "declarationMap": true,
+    "esModuleInterop": true,
+    "resolveJsonModule": true,
+    "module": "commonjs",
+    "target": "es2022",
+    "sourceMap": true,
+    "lib": ["ES2022"],
+    "baseUrl": ".",
+    "rootDir": "src",
+    "outDir": "dist",
+    "paths": {
+      "src/*": ["./src/*"]
     },
-    "compilerOptions": {
-        /* Visit https://aka.ms/tsconfig to read more about this file */
-        "declaration": true,
-        "declarationMap": true,
-        "esModuleInterop": true,
-        "resolveJsonModule": true,
-        "module": "commonjs",
-        "target": "es2022",
-        "sourceMap": true,
-        "lib": ["ES2022"],
-        "baseUrl": ".",
-        "rootDir": "src",
-        "outDir": "dist",
-        "paths": {
-            "src/*": ["./src/*"]
-        },
-        "typeRoots": ["src/types", "./node_modules/@types"]
-    },
-    "plugins": [
-        // https://github.com/LeDDGroup/typescript-transform-paths#example-config
-        // Transform paths in output .js files
-        { "transform": "typescript-transform-paths", "useRootDirs": true },
-        // Transform paths in output .d.ts files (Include this line if you output declarations files)
-        {
-            "transform": "typescript-transform-paths",
-            "useRootDirs": true,
-            "afterDeclarations": true
-        }
-    ],
-    "include": ["src/**/*.ts", "src/**/*.tsx"],
-    "exclude": ["node_modules", "dist", "src/**/*.test.ts"]
+    "typeRoots": ["src/types", "./node_modules/@types"]
+  },
+  "plugins": [
+    // https://github.com/LeDDGroup/typescript-transform-paths#example-config
+    // Transform paths in output .js files
+    { "transform": "typescript-transform-paths", "useRootDirs": true },
+    // Transform paths in output .d.ts files (Include this line if you output declarations files)
+    {
+      "transform": "typescript-transform-paths",
+      "useRootDirs": true,
+      "afterDeclarations": true
+    }
+  ],
+  "include": ["src/**/*.ts", "src/**/*.tsx"],
+  "exclude": ["node_modules", "dist", "src/**/*.test.ts"]
 }
