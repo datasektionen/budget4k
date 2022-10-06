@@ -3,5 +3,5 @@ import definitions from "./definitions";
 
 export default {
     definition: definitions,
-    apis: ["./api/routes/*.ts"]
+    apis: ["./src/**/*.ts", "./src/**/*.yaml"]
 } as OAS3Options;

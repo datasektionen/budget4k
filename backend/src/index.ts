@@ -14,6 +14,11 @@ app.use(
     swaggerUi.setup(swaggerSpec, { customSiteTitle: "budget4k API" })
 );
 
+app.get("/swagger.json", function (req, res) {
+    res.setHeader("Content-Type", "application/json");
+    res.send(swaggerSpec);
+});
+
 app.use("/v1", api);
 
 app.listen(port, () => {

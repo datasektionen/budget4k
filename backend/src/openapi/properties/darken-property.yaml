@@ -1,0 +1,4 @@
+x-template: &darkenProperty
+  type: boolean
+  default: false
+  readOnly: true

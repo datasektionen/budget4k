@@ -6,7 +6,7 @@ import { Overwrite } from "src/util";
  * components:
  *  schemas:
  *    BudgetLine:
- *      title: Budget Line
+ *      title: BudgetLine
  *      type: object
  *      properties:
  *        budgetLineId:

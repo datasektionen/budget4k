@@ -1,0 +1,4 @@
+x-template: &groupContent
+  application/json:
+    schema:
+      $ref: "#/components/schemas/Group"

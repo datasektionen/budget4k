@@ -15,8 +15,7 @@ model Group {
   name    String
   comment String?
   budgets Budget[]
-  project Boolean  @default(false)
-
+  
   @@map("group")
 }
 

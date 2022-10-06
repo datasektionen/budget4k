@@ -19,11 +19,8 @@ const groupRouter = Router();
  *    responses:
  *      200:
  *        description: A list containing all groups.
- *        content:
- *          application/json:
- *              $ref: '#/components/schemas/Group'
- *      500:
- *        Somthing went wrong.
+ *        content: *groupContent
+ *      500: Somthing went wrong.
  *    tags:
  *      - Group
  */
