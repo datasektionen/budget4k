@@ -1,0 +1,2 @@
+x-template: &conflictResponse
+  description: The request resulted in a conflict.
