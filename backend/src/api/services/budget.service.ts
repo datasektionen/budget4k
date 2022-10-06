@@ -1,5 +1,5 @@
 import { Budget as PBudget } from "@prisma/client";
-import { Budget } from "src/types/db-types";
+import { Budget } from "src/types";
 import { prisma } from "../../lib/prisma";
 
 const PBudgetToBudget = (budget: PBudget): Budget => {

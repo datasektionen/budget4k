@@ -45,3 +45,6 @@ export const toBudgetLine = (budgetLine: PrismaBudgetLine): BudgetLine => {
         editedBy: budgetLine.editedBy ?? undefined
     };
 };
+
+// Overwrites a type in order to not get a union type when joining.
+export type Overwrite<T, U> = Omit<T, keyof U> & U;

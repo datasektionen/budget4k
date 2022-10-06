@@ -1,4 +1,4 @@
-import { CostCenter } from "src/types/db-types";
+import { CostCenter } from "src/types";
 import { toCostCenter } from "../../util";
 import { prisma } from "../../lib/prisma";
 

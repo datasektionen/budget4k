@@ -1,4 +1,4 @@
-import { Group } from "src/types/db-types";
+import { Group } from "src/types";
 import { toGroup } from "../..//util";
 import { prisma } from "../../lib/prisma";
 

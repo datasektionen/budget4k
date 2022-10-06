@@ -1,4 +1,4 @@
-import { BudgetLine } from "src/types/db-types";
+import { BudgetLine } from "src/types";
 import { toBudgetLine } from "../..//util";
 import { prisma } from "../..//lib/prisma";
 

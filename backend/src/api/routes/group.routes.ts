@@ -13,14 +13,19 @@ const groupRouter = Router();
  * @openapi
  * /v1/group:
  *  get:
- *      summary: Returns all the group.
- *      responses:
- *          200:
- *              A list containing all groups.
- *          500:
- *              Somthing went wrong.
- *      tags:
- *          - Group
+ *    summary: Returns all the groups.
+ *    produces:
+ *     - application/json
+ *    responses:
+ *      200:
+ *        description: A list containing all groups.
+ *        content:
+ *          application/json:
+ *              $ref: '#/components/schemas/Group'
+ *      500:
+ *        Somthing went wrong.
+ *    tags:
+ *      - Group
  */
 groupRouter.get("/", getAllGroups);
 groupRouter.post("/", postGroup);

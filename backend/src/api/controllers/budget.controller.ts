@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import { StatusCodes } from "http-status-codes";
-import { Budget } from "src/types/db-types";
+import { Budget } from "src/types";
 import { errorResponse, successResponse } from "../../util/response";
 import {
     createBudget,
