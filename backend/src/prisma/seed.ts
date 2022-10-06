@@ -30,8 +30,7 @@ const seedBudget = (budgets: BudgetSeed[], groupId: string) => {
         const { budgetId } = await prisma.budget.create({
             data: {
                 comment: budget.comment,
-                active: budget.active ?? false,
-                year: budget.year,
+                validFrom: new Date(),
                 groupId: groupId
             }
         });
@@ -70,12 +69,6 @@ const seedBudgetLines = async (
                 income: budgetLine.income ?? 0,
                 expense: budgetLine.expense ?? 0,
                 comment: budgetLine.comment,
-                validFrom: budgetLine.validFrom
-                    ? new Date(budgetLine.validFrom)
-                    : undefined,
-                validTo: budgetLine.validTo
-                    ? new Date(budgetLine.validTo)
-                    : undefined,
                 editDate: budgetLine.editDate
                     ? new Date(budgetLine.editDate)
                     : undefined,

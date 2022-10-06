@@ -14,16 +14,19 @@ model Group {
   groupId String   @unique @map("group_id")
   name    String
   comment String?
+  active  Boolean  @default(true)
+  project Boolean  @default(false)
+  darken  Boolean  @default(false)
   budgets Budget[]
-  
+
   @@map("group")
 }
 
 model Budget {
   budgetId    Int          @unique @default(autoincrement()) @map("budget_id")
-  year        Int
-  active      Boolean
   comment     String?
+  validFrom   DateTime     @map("valid_from")
+  validTo     DateTime?    @map("valid_to")
   groupId     String       @map("group_id")
   Group       Group?       @relation(fields: [groupId], references: [groupId])
   costCenters CostCenter[]
@@ -49,8 +52,6 @@ model BudgetLine {
   income       Decimal     @default(0)
   expense      Decimal     @default(0)
   comment      String?
-  validFrom    DateTime?   @map("valid_from")
-  validTo      DateTime?   @map("valid_to")
   editDate     DateTime?   @default(now()) @map("edit_date")
   editedBy     String?     @map("edited_by")
   darken       Boolean     @default(false)

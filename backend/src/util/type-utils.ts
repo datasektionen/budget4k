@@ -39,8 +39,6 @@ export const toBudgetLine = (budgetLine: PrismaBudgetLine): BudgetLine => {
         income: budgetLine.income.toNumber(),
         expense: budgetLine.expense.toNumber(),
         comment: budgetLine.comment ?? undefined,
-        validFrom: budgetLine.validFrom ?? undefined,
-        validTo: budgetLine.validTo ?? undefined,
         editDate: budgetLine.editDate ?? undefined,
         editedBy: budgetLine.editedBy ?? undefined
     };

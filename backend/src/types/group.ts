@@ -1,5 +1,3 @@
-import { Group as PrismaGroup } from "@prisma/client";
-import { Overwrite } from "src/util";
 import { Budget } from "src/types/budget";
 
 /**
@@ -17,6 +15,9 @@ import { Budget } from "src/types/budget";
  *          type: string
  *        comment:
  *          *commentProperty
+ *        active:
+ *          type: boolean
+ *          default: true
  *        project:
  *          type: boolean
  *          default: false
@@ -29,9 +30,16 @@ import { Budget } from "src/types/budget";
  *      required:
  *        - groupId
  *        - name
+ *        - active
  *        - project
  *        - darken
  */
-export type Group = Overwrite<PrismaGroup, { comment?: string }> & {
+export interface Group {
+    readonly groupId: string;
+    name: string;
+    comment?: string;
+    active: boolean;
+    project: boolean;
+    darken: boolean;
     budgets?: Budget[];
-};
+}

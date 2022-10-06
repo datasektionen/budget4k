@@ -37,8 +37,6 @@ export const createBudgetLine = async (
             costCenterId: entity.costCenterId,
             darken: entity.darken ?? false,
             comment: entity.comment ?? undefined,
-            validFrom: entity.validFrom ?? undefined,
-            validTo: entity.validTo ?? undefined,
             editDate: entity.editDate ?? undefined,
             editedBy: entity.editedBy ?? undefined
         }
@@ -61,8 +59,6 @@ export const updateBudgetLine = async (
             costCenterId: entity.costCenterId,
             darken: entity.darken ?? false,
             comment: entity.comment ?? undefined,
-            validFrom: entity.validFrom ?? undefined,
-            validTo: entity.validTo ?? undefined,
             editDate: entity.editDate ?? undefined,
             editedBy: entity.editedBy ?? undefined
         }

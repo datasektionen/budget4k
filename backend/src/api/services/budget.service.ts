@@ -34,9 +34,9 @@ export const readBudgetById = async (id: number): Promise<Budget | null> => {
 export const createBudget = async (entity: Budget): Promise<Budget> => {
     const budget = await prisma.budget.create({
         data: {
-            year: entity.year,
-            active: entity.active ?? false,
             comment: entity.comment,
+            validFrom: entity.validFrom ?? new Date(),
+            validTo: entity.validTo,
             groupId: entity.groupId
         }
     });
@@ -50,9 +50,9 @@ export const updateBudget = async (entity: Budget): Promise<Budget> => {
             budgetId: entity.budgetId
         },
         data: {
-            year: entity.year,
-            active: entity.active ?? false,
             comment: entity.comment,
+            validFrom: entity.validFrom,
+            validTo: entity.validTo,
             groupId: entity.groupId
         }
     });

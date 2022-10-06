@@ -1,5 +1,3 @@
-import { CostCenter as PrismaCostCenter } from "@prisma/client";
-import { Overwrite } from "src/util";
 import { BudgetLine } from "src/types/budget-line";
 
 /**
@@ -30,6 +28,11 @@ import { BudgetLine } from "src/types/budget-line";
  *        - darken
  *        - budgetId
  */
-export type CostCenter = Overwrite<PrismaCostCenter, { comment?: string }> & {
+export interface CostCenter {
+    readonly costCenterId: number;
+    name: string;
+    comment?: string;
+    darken: boolean;
+    budgetId: number;
     budgetLines?: BudgetLine[];
-};
+}

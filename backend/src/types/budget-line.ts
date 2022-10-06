@@ -1,6 +1,3 @@
-import { BudgetLine as PrismaBudgetLine } from "@prisma/client";
-import { Overwrite } from "src/util";
-
 /**
  * @openapi
  * components:
@@ -41,15 +38,14 @@ import { Overwrite } from "src/util";
  *        - darken
  *        - costCenterId
  */
-export type BudgetLine = Overwrite<
-    PrismaBudgetLine,
-    {
-        income?: number;
-        expense?: number;
-        comment?: string;
-        validFrom?: Date;
-        validTo?: Date;
-        editDate?: Date;
-        editedBy?: string;
-    }
->;
+export interface BudgetLine {
+    readonly budgetLineId: number;
+    name: string;
+    income: number;
+    expense: number;
+    comment?: string;
+    editDate?: Date;
+    editedBy: string;
+    darken: boolean;
+    costCenterId: number;
+}
