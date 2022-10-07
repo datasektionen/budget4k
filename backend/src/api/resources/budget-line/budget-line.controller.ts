@@ -1,14 +1,14 @@
 import { Request, Response } from "express";
 import { StatusCodes } from "http-status-codes";
-import { BudgetLine } from "src/types";
-import { errorResponse, successResponse } from "../../util/response";
 import {
     createBudgetLine,
     readAllBudgetLines,
     readBudgetLineById,
     removeBudgetLine,
     updateBudgetLine
-} from "../services/budget-line.service";
+} from "../../../services/budget-line.service";
+import { BudgetLine } from "src/types";
+import { errorResponse, successResponse } from "../../../util/response";
 
 export const getAllBudgetLines = async (req: Request, res: Response) => {
     try {

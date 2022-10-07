@@ -1,14 +1,14 @@
 import { Request, Response } from "express";
 import { StatusCodes } from "http-status-codes";
 import { Group } from "src/types";
-import { errorResponse, successResponse } from "../../util/response";
 import {
     createGroup,
     readAllGroups,
     readGroupById,
     removeGroup,
     updateGroup
-} from "../services/group.service";
+} from "../../../services/group.service";
+import { errorResponse, successResponse } from "../../../util";
 
 export const getAllGroups = async (req: Request, res: Response) => {
     try {

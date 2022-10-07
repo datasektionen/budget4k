@@ -1,6 +1,6 @@
 import { CostCenter } from "src/types";
-import { toCostCenter } from "../../util";
-import { prisma } from "../../lib/prisma";
+import { toCostCenter } from "../util";
+import { prisma } from "../lib/prisma";
 
 export const readAllCostCenters = async (): Promise<CostCenter[]> => {
     const costCenters = await prisma.costCenter.findMany();

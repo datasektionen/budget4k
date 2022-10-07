@@ -1,13 +1,10 @@
 import { Router } from "express";
 import {
-    postGroup,
-    getAllGroups,
-    getGroupById,
-    deleteGroup,
-    putGroup
-} from "../controllers/group.controller";
+    deleteGroup, getAllGroups,
+    getGroupById, postGroup, putGroup
+} from "./group.controller";
 
-const groupRouter = Router();
+export const groupRouter = Router();
 
 /**
  * @openapi
@@ -54,5 +51,3 @@ groupRouter.post("/", postGroup);
 groupRouter.get("/:groupId", getGroupById);
 groupRouter.put("/:groupId", putGroup);
 groupRouter.delete("/:groupId", deleteGroup);
-
-export default groupRouter;

@@ -1,9 +1,10 @@
 import express from "express";
-import groupRouter from "./routes/group.routes";
-import budgetRouter from "./routes/budget.routes";
-import costCenterRouter from "./routes/cost-center.routes";
-import budgetLineRouter from "./routes/budget-line.routes";
-
+import {
+    budgetLineRouter,
+    budgetRouter,
+    costCenterRouter,
+    groupRouter
+} from "./resources";
 const api = express();
 
 api.get("/", (req: express.Request, res: express.Response) => {

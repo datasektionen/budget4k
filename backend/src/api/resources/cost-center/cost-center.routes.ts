@@ -5,9 +5,9 @@ import {
     getCostCenterById,
     postCostCenter,
     putCostCenter
-} from "../controllers/cost-center.controller";
+} from "./cost-center.controller";
 
-const costCenterRouter = Router();
+export const costCenterRouter = Router();
 
 costCenterRouter.get("/", getAllCostCenters);
 costCenterRouter.post("/", postCostCenter);
@@ -15,5 +15,3 @@ costCenterRouter.post("/", postCostCenter);
 costCenterRouter.get("/:costCenterId(\\d+)", getCostCenterById);
 costCenterRouter.put("/:costCenterId(\\d+)", putCostCenter);
 costCenterRouter.delete("/:costCenterId(\\d+)", deleteCostCenter);
-
-export default costCenterRouter;

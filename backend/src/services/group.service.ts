@@ -1,6 +1,6 @@
 import { Group } from "src/types";
-import { prisma } from "../../lib/prisma";
-import { toGroup } from "../../util";
+import { prisma } from "../lib/prisma";
+import { toGroup } from "../util";
 
 export const readAllGroups = async (): Promise<Group[]> => {
     const groups = await prisma.group.findMany();

@@ -1,14 +1,14 @@
 import { Request, Response } from "express";
 import { StatusCodes } from "http-status-codes";
-import { CostCenter } from "src/types";
-import { errorResponse, successResponse } from "../../util/response";
 import {
     createCostCenter,
     readAllCostCenters,
     readCostCenterById,
     removeCostCenter,
     updateCostCenter
-} from "../services/cost-center.service";
+} from "../../../services/cost-center.service";
+import { CostCenter } from "src/types";
+import { errorResponse, successResponse } from "../../../util/response";
 
 export const getAllCostCenters = async (req: Request, res: Response) => {
     try {
