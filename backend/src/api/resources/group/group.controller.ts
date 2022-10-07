@@ -4,6 +4,7 @@ import { Group } from "src/types";
 import {
     createGroup,
     readAllGroups,
+    readGroupBudgets,
     readGroupById,
     removeGroup,
     updateGroup
@@ -43,6 +44,28 @@ export const getGroupById = async (req: Request, res: Response) => {
                 StatusCodes.NOT_FOUND
             );
         }
+    } catch (error) {
+        return errorResponse(
+            req,
+            res,
+            error,
+            StatusCodes.INTERNAL_SERVER_ERROR
+        );
+    }
+};
+
+export const getGroupBudgets = async (req: Request, res: Response) => {
+    try {
+        const groupId = req.params?.groupId;
+        const onlyActive = req.query?.active === "true" ?? false;
+        const data = await readGroupBudgets(groupId, onlyActive);
+
+        return successResponse(
+            req,
+            res,
+            data,
+            "All budgets available for this group"
+        );
     } catch (error) {
         return errorResponse(
             req,

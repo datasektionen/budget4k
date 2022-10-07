@@ -1,7 +1,11 @@
 import { Router } from "express";
 import {
-    deleteGroup, getAllGroups,
-    getGroupById, postGroup, putGroup
+    deleteGroup,
+    getAllGroups,
+    getGroupBudgets,
+    getGroupById,
+    postGroup,
+    putGroup
 } from "./group.controller";
 
 export const groupRouter = Router();
@@ -51,3 +55,5 @@ groupRouter.post("/", postGroup);
 groupRouter.get("/:groupId", getGroupById);
 groupRouter.put("/:groupId", putGroup);
 groupRouter.delete("/:groupId", deleteGroup);
+
+groupRouter.get("/:groupId/budget", getGroupBudgets);

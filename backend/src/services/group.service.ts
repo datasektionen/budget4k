@@ -1,6 +1,6 @@
-import { Group } from "src/types";
+import { Budget, Group } from "src/types";
 import { prisma } from "../lib/prisma";
-import { toGroup } from "../util";
+import { toBudget, toGroup } from "../util";
 
 export const readAllGroups = async (): Promise<Group[]> => {
     const groups = await prisma.group.findMany();
@@ -22,6 +22,46 @@ export const readGroupById = async (id: string): Promise<Group | null> => {
     }
 
     return toGroup(group);
+};
+
+export const readGroupBudgets = async (
+    id: string,
+    onlyActive: boolean
+): Promise<Budget[]> => {
+    let where = {};
+    if (onlyActive) {
+        where = {
+            groupId: id,
+            AND: {
+                validFrom: {
+                    lte: new Date()
+                },
+                validTo: {
+                    gt: new Date()
+                }
+            }
+        };
+    } else {
+        where = {
+            groupId: id
+        };
+    }
+
+    const budgets = await prisma.budget.findMany({
+        orderBy: {
+            validFrom: "desc"
+        },
+        where: where,
+        include: {
+            costCenters: {
+                include: {
+                    budgetLines: true
+                }
+            }
+        }
+    });
+
+    return budgets.map(toBudget);
 };
 
 export const createGroup = async (group: Group): Promise<Group> => {
