@@ -19,6 +19,8 @@ app.get("/swagger.json", function (req, res) {
     res.send(swaggerSpec);
 });
 
+app.use(express.json());
+
 app.use("/v1", api);
 
 app.listen(port, () => {

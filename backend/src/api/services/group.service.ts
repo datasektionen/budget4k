@@ -1,6 +1,6 @@
 import { Group } from "src/types";
-import { toGroup } from "../..//util";
 import { prisma } from "../../lib/prisma";
+import { toGroup } from "../../util";
 
 export const readAllGroups = async (): Promise<Group[]> => {
     const groups = await prisma.group.findMany();
@@ -24,31 +24,23 @@ export const readGroupById = async (id: string): Promise<Group | null> => {
     return toGroup(group);
 };
 
-export const createGroup = async (entity: Group): Promise<Group> => {
-    const group = await prisma.group.create({
-        data: {
-            groupId: entity.groupId,
-            name: entity.name,
-            comment: entity.comment
-        }
+export const createGroup = async (group: Group): Promise<Group> => {
+    const createdGroup = await prisma.group.create({
+        data: group
     });
 
-    return toGroup(group);
+    return toGroup(createdGroup);
 };
 
-export const updateGroup = async (entity: Group): Promise<Group> => {
-    const group = await prisma.group.update({
+export const updateGroup = async (group: Group): Promise<Group> => {
+    const updatedGroup = await prisma.group.update({
         where: {
-            groupId: entity.groupId
+            groupId: group.groupId
         },
-        data: {
-            groupId: entity.groupId,
-            name: entity.name,
-            comment: entity.comment
-        }
+        data: group
     });
 
-    return toGroup(group);
+    return toGroup(updatedGroup);
 };
 
 export const removeGroup = async (groupId: string): Promise<Group> => {

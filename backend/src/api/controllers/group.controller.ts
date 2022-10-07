@@ -1,3 +1,7 @@
+import { Request, Response } from "express";
+import { StatusCodes } from "http-status-codes";
+import { Group } from "src/types";
+import { errorResponse, successResponse } from "../../util/response";
 import {
     createGroup,
     readAllGroups,
@@ -5,10 +9,6 @@ import {
     removeGroup,
     updateGroup
 } from "../services/group.service";
-import { Request, Response } from "express";
-import { StatusCodes } from "http-status-codes";
-import { Group } from "src/types";
-import { errorResponse, successResponse } from "../../util/response";
 
 export const getAllGroups = async (req: Request, res: Response) => {
     try {
@@ -55,7 +55,13 @@ export const getGroupById = async (req: Request, res: Response) => {
 
 export const postGroup = async (req: Request, res: Response) => {
     try {
-        const group = JSON.parse(req.body.group) as Group;
+        const group: Group = {
+            ...req.body.group,
+            active: req.body.group.active ?? true,
+            project: req.body.group.project ?? false,
+            darken: req.body.group.darken ?? false
+        };
+
         const data = await createGroup(group);
         return successResponse(req, res, data, "Group created");
     } catch (error) {
@@ -70,7 +76,10 @@ export const postGroup = async (req: Request, res: Response) => {
 
 export const putGroup = async (req: Request, res: Response) => {
     try {
-        const group = JSON.parse(req.body.group) as Group;
+        const group: Group = {
+            ...req.body.group
+        };
+
         const data = await updateGroup(group);
         return successResponse(req, res, data, "Group updated");
     } catch (error) {
