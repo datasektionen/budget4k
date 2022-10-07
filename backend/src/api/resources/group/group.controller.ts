@@ -2,18 +2,18 @@ import { Request, Response } from "express";
 import { StatusCodes } from "http-status-codes";
 import { Group } from "src/types";
 import {
-    createGroup,
-    readAllGroups,
-    readGroupBudgets,
-    readGroupById,
-    removeGroup,
-    updateGroup
-} from "../../../services/group.service";
+    CreateGroupService,
+    DeleteGroupService,
+    GetGroupService,
+    UpdateGroupService
+} from "../../../service/group";
 import { errorResponse, successResponse } from "../../../util";
 
 export const getAllGroups = async (req: Request, res: Response) => {
     try {
-        const data = await readAllGroups();
+        const service = new GetGroupService();
+        const data = await service.getMany();
+
         return successResponse(req, res, data, "All groups");
     } catch (error) {
         return errorResponse(
@@ -28,7 +28,10 @@ export const getAllGroups = async (req: Request, res: Response) => {
 export const getGroupById = async (req: Request, res: Response) => {
     try {
         const groupId = req.params.groupId;
-        const data = await readGroupById(groupId);
+
+        const service = new GetGroupService();
+        const data = await service.getById(groupId);
+
         if (data) {
             return successResponse(
                 req,
@@ -54,27 +57,28 @@ export const getGroupById = async (req: Request, res: Response) => {
     }
 };
 
-export const getGroupBudgets = async (req: Request, res: Response) => {
-    try {
-        const groupId = req.params?.groupId;
-        const onlyActive = req.query?.active === "true" ?? false;
-        const data = await readGroupBudgets(groupId, onlyActive);
+// export const getGroupBudgets = async (req: Request, res: Response) => {
+//     try {
+//         const groupId = req.params?.groupId;
+//         const onlyActive = req.query?.active === "true" ?? false;
+//         const service = new GetGroupService();
+//         const data = await readGroupBudgets(groupId, onlyActive);
 
-        return successResponse(
-            req,
-            res,
-            data,
-            "All budgets available for this group"
-        );
-    } catch (error) {
-        return errorResponse(
-            req,
-            res,
-            error,
-            StatusCodes.INTERNAL_SERVER_ERROR
-        );
-    }
-};
+//         return successResponse(
+//             req,
+//             res,
+//             data,
+//             "All budgets available for this group"
+//         );
+//     } catch (error) {
+//         return errorResponse(
+//             req,
+//             res,
+//             error,
+//             StatusCodes.INTERNAL_SERVER_ERROR
+//         );
+//     }
+// };
 
 export const postGroup = async (req: Request, res: Response) => {
     try {
@@ -85,7 +89,9 @@ export const postGroup = async (req: Request, res: Response) => {
             darken: req.body.group.darken ?? false
         };
 
-        const data = await createGroup(group);
+        const service = new CreateGroupService();
+        const data = await service.create(group);
+
         return successResponse(req, res, data, "Group created");
     } catch (error) {
         return errorResponse(
@@ -103,7 +109,9 @@ export const putGroup = async (req: Request, res: Response) => {
             ...req.body.group
         };
 
-        const data = await updateGroup(group);
+        const service = new UpdateGroupService();
+        const data = await service.update(group.groupId, group);
+
         return successResponse(req, res, data, "Group updated");
     } catch (error) {
         return errorResponse(
@@ -118,7 +126,10 @@ export const putGroup = async (req: Request, res: Response) => {
 export const deleteGroup = async (req: Request, res: Response) => {
     try {
         const groupId = req.params.groupId;
-        const data = await removeGroup(groupId);
+
+        const service = new DeleteGroupService();
+        const data = await service.delete(groupId);
+
         return successResponse(req, res, data, "Group deleted");
     } catch (error) {
         return errorResponse(

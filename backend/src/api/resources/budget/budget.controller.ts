@@ -6,7 +6,7 @@ import {
     readBudgetById,
     removeBudget,
     updateBudget
-} from "../../../services/budget.service";
+} from "../../../service/budget.service";
 import { Budget } from "src/types";
 import { errorResponse, successResponse } from "../../../util/response";
 

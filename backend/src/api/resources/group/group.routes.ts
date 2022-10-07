@@ -2,7 +2,7 @@ import { Router } from "express";
 import {
     deleteGroup,
     getAllGroups,
-    getGroupBudgets,
+    // getGroupBudgets,
     getGroupById,
     postGroup,
     putGroup
@@ -56,4 +56,4 @@ groupRouter.get("/:groupId", getGroupById);
 groupRouter.put("/:groupId", putGroup);
 groupRouter.delete("/:groupId", deleteGroup);
 
-groupRouter.get("/:groupId/budget", getGroupBudgets);
+// groupRouter.get("/:groupId/budget", getGroupBudgets);

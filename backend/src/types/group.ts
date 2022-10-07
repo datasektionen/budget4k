@@ -35,7 +35,7 @@ import { Budget } from "src/types/budget";
  *        - darken
  */
 export interface Group {
-    readonly groupId: string;
+    groupId: string;
     name: string;
     comment?: string;
     active: boolean;
@@ -43,3 +43,7 @@ export interface Group {
     darken: boolean;
     budgets?: Budget[];
 }
+
+export type INewGroup = Pick<Group, "groupId" | "name">;
+
+export type IUpdateGroup = Omit<Group, "groupId" | "budgets">;

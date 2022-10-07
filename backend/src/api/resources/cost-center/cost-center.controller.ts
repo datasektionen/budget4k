@@ -6,7 +6,7 @@ import {
     readCostCenterById,
     removeCostCenter,
     updateCostCenter
-} from "../../../services/cost-center.service";
+} from "../../../service/cost-center.service";
 import { CostCenter } from "src/types";
 import { errorResponse, successResponse } from "../../../util/response";
 
