@@ -1,0 +1,119 @@
+{
+    "budget": [
+        {
+            "budgetId": 1,
+            "year": 2022,
+            "active": true,
+            "committees": [
+                {
+                    "committeeId": 1,
+                    "name": "D-rektoratet",
+                    "comment": "Konglig Datasektionens styrelse",
+                    "budgetId": 1,
+                    "costCenters": [
+                        {
+                            "costCenterId": 1,
+                            "name": "Allmänt",
+                            "comment": "Allmäna grejer",
+                            "darken": false,
+                            "committeeId": 1,
+                            "budgetLines": [
+                                {
+                                    "budgetLineId": 1,
+                                    "name": "Fika",
+                                    "income": 0,
+                                    "expense": 4000,
+                                    "comment": "Goa grjer",
+                                    "valid_from": "2022-01-01 00:00:00.00+2",
+                                    "valid_to": "2022-12-31 23:59:59.00+2",
+                                    "edit_date": null,
+                                    "edited_by": null,
+                                    "darken": false,
+                                    "costCenterId": 1
+                                },
+                                {
+                                    "budgetLineId": 2,
+                                    "name": "Juridisk rådgivning",
+                                    "income": 0,
+                                    "expense": 40000,
+                                    "comment": null,
+                                    "valid_from": "2022-01-01 00:00:00.00+2",
+                                    "valid_to": "2022-12-31 23:59:59.00+2",
+                                    "edit_date": null,
+                                    "edited_by": null,
+                                    "darken": false,
+                                    "costCenterId": 1
+                                },
+                                {
+                                    "budgetLineId": 3,
+                                    "name": "Profilmaterial",
+                                    "income": 0,
+                                    "expense": 2500,
+                                    "comment": null,
+                                    "valid_from": "2022-01-01 00:00:00.00+2",
+                                    "valid_to": "2022-12-31 23:59:59.00+2",
+                                    "edit_date": null,
+                                    "edited_by": null,
+                                    "darken": false,
+                                    "costCenterId": 1
+                                },
+                                {
+                                    "budgetLineId": 4,
+                                    "name": "Representation",
+                                    "income": 0,
+                                    "expense": 14000,
+                                    "comment": null,
+                                    "valid_from": "2022-01-01 00:00:00.00+2",
+                                    "valid_to": "2022-12-31 23:59:59.00+2",
+                                    "edit_date": null,
+                                    "edited_by": null,
+                                    "darken": false,
+                                    "costCenterId": 1
+                                },
+                                {
+                                    "budgetLineId": 5,
+                                    "name": "Representationsgåvor",
+                                    "income": 0,
+                                    "expense": 5000,
+                                    "comment": null,
+                                    "valid_from": "2022-01-01 00:00:00.00+2",
+                                    "valid_to": "2022-12-31 23:59:59.00+2",
+                                    "edit_date": null,
+                                    "edited_by": null,
+                                    "darken": false,
+                                    "costCenterId": 1
+                                },
+                                {
+                                    "budgetLineId": 6,
+                                    "name": "Skrivarkvot",
+                                    "income": 0,
+                                    "expense": 2000,
+                                    "comment": null,
+                                    "valid_from": "2022-01-01 00:00:00.00+2",
+                                    "valid_to": "2022-12-31 23:59:59.00+2",
+                                    "edit_date": null,
+                                    "edited_by": null,
+                                    "darken": false,
+                                    "costCenterId": 1
+                                },
+                                {
+                                    "budgetLineId": 7,
+                                    "name": "Tryckkostnad",
+                                    "income": 0,
+                                    "expense": 2000,
+                                    "comment": null,
+                                    "valid_from": "2022-01-01 00:00:00.00+2",
+                                    "valid_to": "2022-12-31 23:59:59.00+2",
+                                    "edit_date": null,
+                                    "edited_by": null,
+                                    "darken": false,
+                                    "costCenterId": 1
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

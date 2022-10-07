@@ -1,7 +1,11 @@
+import { Route } from "react-router"
+import { Link } from "@remix-run/react"
+
 export default function Index() {
   return (
     <div style={{ fontFamily: "system-ui, sans-serif", lineHeight: "1.4" }}>
       <h1>Welcome to Remix</h1>
+      <Link to="/committees">Fippel</Link>
       <ul>
         <li>
           <a
@@ -18,7 +22,7 @@ export default function Index() {
             href="https://remix.run/tutorials/jokes"
             rel="noreferrer"
           >
-            Deep Dive Jokes App Tutorial
+            Deep Rock Dive Jokes App Tutorial
           </a>
         </li>
         <li>
