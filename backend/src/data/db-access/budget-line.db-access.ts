@@ -23,8 +23,6 @@ export const updateBudgetLine = async (
     });
 };
 
-export const removeBudgetLine = async (
-    where: Prisma.BudgetLineDeleteArgs["where"]
-) => {
+export const removeBudgetLine = async (where: Prisma.BudgetLineDeleteArgs["where"]) => {
     return await prisma.budgetLine.delete({ where: where });
 };

@@ -1,11 +1,5 @@
 import { PrismaClient } from "@prisma/client";
-import {
-    BudgetLineSeed,
-    budgets,
-    BudgetSeed,
-    CostCenterSeed,
-    GroupSeed
-} from "./data";
+import { BudgetLineSeed, budgets, BudgetSeed, CostCenterSeed, GroupSeed } from "./data";
 
 const prisma = new PrismaClient();
 
@@ -58,10 +52,7 @@ const seedCostCenters = (costCenters: CostCenterSeed[], budgetId: number) => {
     });
 };
 
-const seedBudgetLines = async (
-    budgetLines: BudgetLineSeed[],
-    costCenterId: number
-) => {
+const seedBudgetLines = async (budgetLines: BudgetLineSeed[], costCenterId: number) => {
     budgetLines.map(async (budgetLine) => {
         await prisma.budgetLine.create({
             data: {
@@ -69,9 +60,7 @@ const seedBudgetLines = async (
                 income: budgetLine.income ?? 0,
                 expense: budgetLine.expense ?? 0,
                 comment: budgetLine.comment,
-                editDate: budgetLine.editDate
-                    ? new Date(budgetLine.editDate)
-                    : undefined,
+                editDate: budgetLine.editDate ? new Date(budgetLine.editDate) : undefined,
                 editedBy: budgetLine.editedBy,
                 darken: budgetLine.darken ?? false,
                 costCenterId: costCenterId

@@ -16,12 +16,7 @@ export const getAllCostCenters = async (req: Request, res: Response) => {
 
         return successResponse(req, res, data, "All cost centers");
     } catch (error) {
-        return errorResponse(
-            req,
-            res,
-            error,
-            StatusCodes.INTERNAL_SERVER_ERROR
-        );
+        return errorResponse(req, res, error, StatusCodes.INTERNAL_SERVER_ERROR);
     }
 };
 
@@ -32,12 +27,7 @@ export const getCostCenterById = async (req: Request, res: Response) => {
         const data = await findCostCenterById(costCenterId);
 
         if (data) {
-            return successResponse(
-                req,
-                res,
-                data,
-                `Cost center with id '${costCenterId}'`
-            );
+            return successResponse(req, res, data, `Cost center with id '${costCenterId}'`);
         } else {
             return errorResponse(
                 req,
@@ -47,12 +37,7 @@ export const getCostCenterById = async (req: Request, res: Response) => {
             );
         }
     } catch (error) {
-        return errorResponse(
-            req,
-            res,
-            error,
-            StatusCodes.INTERNAL_SERVER_ERROR
-        );
+        return errorResponse(req, res, error, StatusCodes.INTERNAL_SERVER_ERROR);
     }
 };
 
@@ -64,12 +49,7 @@ export const postCostCenter = async (req: Request, res: Response) => {
 
         return successResponse(req, res, costCenter, "Created costCenter");
     } catch (error) {
-        return errorResponse(
-            req,
-            res,
-            error,
-            StatusCodes.INTERNAL_SERVER_ERROR
-        );
+        return errorResponse(req, res, error, StatusCodes.INTERNAL_SERVER_ERROR);
     }
 };
 
@@ -86,12 +66,7 @@ export const putCostCenter = async (req: Request, res: Response) => {
 
         return successResponse(req, res, data, "Created costCenter");
     } catch (error) {
-        return errorResponse(
-            req,
-            res,
-            error,
-            StatusCodes.INTERNAL_SERVER_ERROR
-        );
+        return errorResponse(req, res, error, StatusCodes.INTERNAL_SERVER_ERROR);
     }
 };
 
@@ -103,11 +78,6 @@ export const deleteCostCenter = async (req: Request, res: Response) => {
 
         return successResponse(req, res, data, "Created costCenter");
     } catch (error) {
-        return errorResponse(
-            req,
-            res,
-            error,
-            StatusCodes.INTERNAL_SERVER_ERROR
-        );
+        return errorResponse(req, res, error, StatusCodes.INTERNAL_SERVER_ERROR);
     }
 };

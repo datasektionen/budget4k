@@ -23,8 +23,6 @@ export const updateCostCenter = async (
     });
 };
 
-export const removeCostCenter = async (
-    where: Prisma.CostCenterDeleteArgs["where"]
-) => {
+export const removeCostCenter = async (where: Prisma.CostCenterDeleteArgs["where"]) => {
     return await prisma.costCenter.delete({ where: where });
 };

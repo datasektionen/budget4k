@@ -1,10 +1,5 @@
 import express from "express";
-import {
-    budgetLineRouter,
-    budgetRouter,
-    costCenterRouter,
-    groupRouter
-} from "./resources";
+import { budgetLineRouter, budgetRouter, costCenterRouter, groupRouter } from "./resources";
 const api = express();
 
 api.get("/", (req: express.Request, res: express.Response) => {

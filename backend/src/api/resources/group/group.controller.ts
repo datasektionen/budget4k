@@ -16,12 +16,7 @@ export const getAllGroups = async (req: Request, res: Response) => {
 
         return successResponse(req, res, data, "All groups");
     } catch (error) {
-        return errorResponse(
-            req,
-            res,
-            error,
-            StatusCodes.INTERNAL_SERVER_ERROR
-        );
+        return errorResponse(req, res, error, StatusCodes.INTERNAL_SERVER_ERROR);
     }
 };
 
@@ -32,12 +27,7 @@ export const getGroupById = async (req: Request, res: Response) => {
         const data = await findGroupById(groupId);
 
         if (data) {
-            return successResponse(
-                req,
-                res,
-                data,
-                `Group with id '${groupId}'`
-            );
+            return successResponse(req, res, data, `Group with id '${groupId}'`);
         } else {
             return errorResponse(
                 req,
@@ -47,12 +37,7 @@ export const getGroupById = async (req: Request, res: Response) => {
             );
         }
     } catch (error) {
-        return errorResponse(
-            req,
-            res,
-            error,
-            StatusCodes.INTERNAL_SERVER_ERROR
-        );
+        return errorResponse(req, res, error, StatusCodes.INTERNAL_SERVER_ERROR);
     }
 };
 
@@ -92,12 +77,7 @@ export const postGroup = async (req: Request, res: Response) => {
 
         return successResponse(req, res, data, "Group created");
     } catch (error) {
-        return errorResponse(
-            req,
-            res,
-            error,
-            StatusCodes.INTERNAL_SERVER_ERROR
-        );
+        return errorResponse(req, res, error, StatusCodes.INTERNAL_SERVER_ERROR);
     }
 };
 
@@ -114,12 +94,7 @@ export const putGroup = async (req: Request, res: Response) => {
 
         return successResponse(req, res, data, "Group updated");
     } catch (error) {
-        return errorResponse(
-            req,
-            res,
-            error,
-            StatusCodes.INTERNAL_SERVER_ERROR
-        );
+        return errorResponse(req, res, error, StatusCodes.INTERNAL_SERVER_ERROR);
     }
 };
 
@@ -131,11 +106,6 @@ export const deleteGroup = async (req: Request, res: Response) => {
 
         return successResponse(req, res, data, "Group deleted");
     } catch (error) {
-        return errorResponse(
-            req,
-            res,
-            error,
-            StatusCodes.INTERNAL_SERVER_ERROR
-        );
+        return errorResponse(req, res, error, StatusCodes.INTERNAL_SERVER_ERROR);
     }
 };
