@@ -33,10 +33,14 @@ import { CostCenter } from "src/types/cost-center";
  *        - groupId
  */
 export interface Budget {
-    readonly budgetId: number;
+    budgetId: number;
     comment?: string;
     validFrom: Date;
     validTo?: Date;
     groupId: string;
     costCenters?: CostCenter[];
 }
+
+export type INewBudget = Omit<Budget, "costCenters">;
+
+export type IUpdateGroup = Omit<Budget, "budgetId" | "costCenters">;

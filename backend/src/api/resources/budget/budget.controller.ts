@@ -1,18 +1,19 @@
 import { Request, Response } from "express";
 import { StatusCodes } from "http-status-codes";
+import { Budget } from "src/types";
 import {
     createBudget,
-    readAllBudgets,
-    readBudgetById,
+    findAllBudgets,
+    findBudgetById,
     removeBudget,
     updateBudget
-} from "../../../service/budget.service";
-import { Budget } from "src/types";
+} from "../../../data";
 import { errorResponse, successResponse } from "../../../util/response";
 
 export const getAllBudgets = async (req: Request, res: Response) => {
     try {
-        const data = await readAllBudgets();
+        const data = await findAllBudgets();
+
         return successResponse(req, res, data, "All budgets");
     } catch (error) {
         return errorResponse(
@@ -27,7 +28,9 @@ export const getAllBudgets = async (req: Request, res: Response) => {
 export const getBudgetById = async (req: Request, res: Response) => {
     try {
         const budgetId = +req.params.budgetId;
-        const data = await readBudgetById(budgetId);
+
+        const data = await findBudgetById(budgetId);
+
         if (data) {
             return successResponse(
                 req,
@@ -56,7 +59,9 @@ export const getBudgetById = async (req: Request, res: Response) => {
 export const postBudget = async (req: Request, res: Response) => {
     try {
         const budgetData = JSON.parse(req.body.budget) as Budget;
+
         const budget = await createBudget(budgetData);
+
         return successResponse(req, res, budget, "Created budget");
     } catch (error) {
         return errorResponse(
@@ -71,7 +76,12 @@ export const postBudget = async (req: Request, res: Response) => {
 export const putBudget = async (req: Request, res: Response) => {
     try {
         const budget = JSON.parse(req.body.budget) as Budget;
-        const data = await updateBudget(budget);
+
+        const data = await updateBudget(
+            { ...budget, costCenters: undefined },
+            { budgetId: budget.budgetId }
+        );
+
         return successResponse(req, res, data, "Created budget");
     } catch (error) {
         return errorResponse(
@@ -86,7 +96,9 @@ export const putBudget = async (req: Request, res: Response) => {
 export const deleteBudget = async (req: Request, res: Response) => {
     try {
         const budgetId = +req.params.budgetId;
-        const data = await removeBudget(budgetId);
+
+        const data = await removeBudget({ budgetId });
+
         return successResponse(req, res, data, "Created budget");
     } catch (error) {
         return errorResponse(
