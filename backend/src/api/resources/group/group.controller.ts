@@ -1,18 +1,18 @@
 import { Request, Response } from "express";
 import { StatusCodes } from "http-status-codes";
-import { Group } from "src/types";
 import {
-    CreateGroupService,
-    DeleteGroupService,
-    GetGroupService,
-    UpdateGroupService
-} from "../../../service/group";
+    createGroup,
+    findAllGroups,
+    findGroupById,
+    removeGroup,
+    updateGroup
+} from "../../../data/db-access";
+import { Group } from "src/types";
 import { errorResponse, successResponse } from "../../../util";
 
 export const getAllGroups = async (req: Request, res: Response) => {
     try {
-        const service = new GetGroupService();
-        const data = await service.getMany();
+        const data = await findAllGroups();
 
         return successResponse(req, res, data, "All groups");
     } catch (error) {
@@ -29,8 +29,7 @@ export const getGroupById = async (req: Request, res: Response) => {
     try {
         const groupId = req.params.groupId;
 
-        const service = new GetGroupService();
-        const data = await service.getById(groupId);
+        const data = await findGroupById(groupId);
 
         if (data) {
             return successResponse(
@@ -89,8 +88,7 @@ export const postGroup = async (req: Request, res: Response) => {
             darken: req.body.group.darken ?? false
         };
 
-        const service = new CreateGroupService();
-        const data = await service.create(group);
+        const data = await createGroup(group);
 
         return successResponse(req, res, data, "Group created");
     } catch (error) {
@@ -109,8 +107,10 @@ export const putGroup = async (req: Request, res: Response) => {
             ...req.body.group
         };
 
-        const service = new UpdateGroupService();
-        const data = await service.update(group.groupId, group);
+        const data = await updateGroup(
+            { ...group, budgets: undefined },
+            { groupId: group.groupId }
+        );
 
         return successResponse(req, res, data, "Group updated");
     } catch (error) {
@@ -127,8 +127,7 @@ export const deleteGroup = async (req: Request, res: Response) => {
     try {
         const groupId = req.params.groupId;
 
-        const service = new DeleteGroupService();
-        const data = await service.delete(groupId);
+        const data = await removeGroup({ groupId });
 
         return successResponse(req, res, data, "Group deleted");
     } catch (error) {

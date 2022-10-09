@@ -44,6 +44,6 @@ export interface Group {
     budgets?: Budget[];
 }
 
-export type INewGroup = Pick<Group, "groupId" | "name">;
+export type INewGroup = Omit<Group, "budgets">;
 
 export type IUpdateGroup = Omit<Group, "groupId" | "budgets">;
