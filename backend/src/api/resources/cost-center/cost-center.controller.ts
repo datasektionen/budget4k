@@ -1,18 +1,19 @@
 import { Request, Response } from "express";
 import { StatusCodes } from "http-status-codes";
+import { CostCenter } from "src/types";
 import {
     createCostCenter,
-    readAllCostCenters,
-    readCostCenterById,
+    findAllCostCenters,
+    findCostCenterById,
     removeCostCenter,
     updateCostCenter
-} from "../../../service/cost-center.service";
-import { CostCenter } from "src/types";
+} from "../../../data";
 import { errorResponse, successResponse } from "../../../util/response";
 
 export const getAllCostCenters = async (req: Request, res: Response) => {
     try {
-        const data = await readAllCostCenters();
+        const data = await findAllCostCenters();
+
         return successResponse(req, res, data, "All cost centers");
     } catch (error) {
         return errorResponse(
@@ -27,7 +28,9 @@ export const getAllCostCenters = async (req: Request, res: Response) => {
 export const getCostCenterById = async (req: Request, res: Response) => {
     try {
         const costCenterId = +req.params.costCenterId;
-        const data = await readCostCenterById(costCenterId);
+
+        const data = await findCostCenterById(costCenterId);
+
         if (data) {
             return successResponse(
                 req,
@@ -56,7 +59,9 @@ export const getCostCenterById = async (req: Request, res: Response) => {
 export const postCostCenter = async (req: Request, res: Response) => {
     try {
         const costCenterData = JSON.parse(req.body.costCenter) as CostCenter;
+
         const costCenter = await createCostCenter(costCenterData);
+
         return successResponse(req, res, costCenter, "Created costCenter");
     } catch (error) {
         return errorResponse(
@@ -71,7 +76,14 @@ export const postCostCenter = async (req: Request, res: Response) => {
 export const putCostCenter = async (req: Request, res: Response) => {
     try {
         const costCenter = JSON.parse(req.body.costCenter) as CostCenter;
-        const data = await updateCostCenter(costCenter);
+
+        const data = await updateCostCenter(
+            { ...costCenter, budgetLines: undefined },
+            {
+                costCenterId: costCenter.costCenterId
+            }
+        );
+
         return successResponse(req, res, data, "Created costCenter");
     } catch (error) {
         return errorResponse(
@@ -86,7 +98,9 @@ export const putCostCenter = async (req: Request, res: Response) => {
 export const deleteCostCenter = async (req: Request, res: Response) => {
     try {
         const costCenterId = +req.params.costCenterId;
-        const data = await removeCostCenter(costCenterId);
+
+        const data = await removeCostCenter({ costCenterId });
+
         return successResponse(req, res, data, "Created costCenter");
     } catch (error) {
         return errorResponse(

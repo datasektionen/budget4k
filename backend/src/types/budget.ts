@@ -41,6 +41,4 @@ export interface Budget {
     costCenters?: CostCenter[];
 }
 
-export type INewBudget = Omit<Budget, "costCenters">;
-
-export type IUpdateGroup = Omit<Budget, "budgetId" | "costCenters">;
+export type INewBudget = Omit<Budget, "budgetId" | "costCenters">;

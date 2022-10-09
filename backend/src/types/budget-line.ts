@@ -39,7 +39,7 @@
  *        - costCenterId
  */
 export interface BudgetLine {
-    readonly budgetLineId: number;
+    budgetLineId: number;
     name: string;
     income: number;
     expense: number;
@@ -49,3 +49,5 @@ export interface BudgetLine {
     darken: boolean;
     costCenterId: number;
 }
+
+export type INewBudgetLine = Omit<BudgetLine, "budgetLineId" | "budgetLines">;

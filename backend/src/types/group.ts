@@ -45,5 +45,3 @@ export interface Group {
 }
 
 export type INewGroup = Omit<Group, "budgets">;
-
-export type IUpdateGroup = Omit<Group, "groupId" | "budgets">;

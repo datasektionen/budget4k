@@ -36,3 +36,5 @@ export interface CostCenter {
     budgetId: number;
     budgetLines?: BudgetLine[];
 }
+
+export type INewCostCenter = Omit<CostCenter, "costCenterId" | "budgetLines">;
