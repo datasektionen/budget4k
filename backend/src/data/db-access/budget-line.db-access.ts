@@ -9,6 +9,7 @@ export const findAllBudgetLines = async () => {
 export const findBudgetLineById = async (id: number) => {
     return await prisma.budgetLine.findUnique({ where: { budgetLineId: id } });
 };
+
 export const createBudgetLine = async (data: INewBudgetLine) => {
     return await prisma.budgetLine.create({ data: data });
 };

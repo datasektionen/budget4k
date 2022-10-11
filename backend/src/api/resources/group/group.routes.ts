@@ -1,12 +1,6 @@
 import { Router } from "express";
-import {
-    deleteGroup,
-    getAllGroups,
-    // getGroupBudgets,
-    getGroupById,
-    postGroup,
-    putGroup
-} from "./group.controller";
+import { getGroupBudgets } from "./budgets";
+import { deleteGroup, getAllGroups, getGroupById, postGroup, putGroup } from "./group.controller";
 
 export const groupRouter = Router();
 
@@ -56,4 +50,16 @@ groupRouter.get("/:groupId", getGroupById);
 groupRouter.put("/:groupId", putGroup);
 groupRouter.delete("/:groupId", deleteGroup);
 
-// groupRouter.get("/:groupId/budget", getGroupBudgets);
+/**
+ * @openapi
+ * /v1/group/{groupId}/budget:
+ *  get:
+ *    summary: Returns a group and its budgets in the specified time period.
+ *    responses:
+ *      200:
+ *        description: The group and its budgets.
+ *        content: *groupBudgetContent
+ *    tags:
+ *      - Group
+ */
+groupRouter.get("/:groupId/budgets", getGroupBudgets);

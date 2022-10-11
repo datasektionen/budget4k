@@ -10,8 +10,8 @@
     "lint": "eslint . --ext .ts",
     "lint:fix": "eslint . --ext .ts --fix",
     "prettier:fix": "yarn prettier -w .",
-    "db:seed": "NODE_ENV=db_seed ts-node-dev src/prisma/seed.ts",
-    "db:clear": "NODE_ENV=db_clear ts-node-dev src/util/clear-db.ts"
+    "db:seed": "NODE_ENV=db_seed ts-node-dev src/data/prisma/seed.ts",
+    "db:clear": "NODE_ENV=db_clear ts-node-dev src/data/util/clear-db.ts"
   },
   "dependencies": {
     "@prisma/client": "^4.3.1",
@@ -42,7 +42,7 @@
     "typescript-transform-paths": "^3.3.1"
   },
   "prisma": {
-    "schema": "src/prisma/schema.prisma"
+    "schema": "src/data/prisma/schema.prisma"
   },
   "packageManager": "yarn@3.2.3"
 }

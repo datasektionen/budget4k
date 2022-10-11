@@ -1,0 +1,4 @@
+x-template: &groupBudgetContent
+  application/json:
+    schema:
+      $ref: "#/components/schemas/GroupWithBudget"

@@ -4,7 +4,7 @@ import { Budget } from "src/types/budget";
  * @openapi
  * components:
  *  schemas:
- *    Group:
+ *    GroupWithBudget:
  *      title: Group
  *      type: object
  *      properties:
@@ -27,6 +27,39 @@ import { Budget } from "src/types/budget";
  *          type: array
  *          items:
  *              $ref: '#/components/schemas/Budget'
+ *      required:
+ *        - groupId
+ *        - name
+ *        - active
+ *        - project
+ *        - darken
+ */
+
+/**
+ * @openapi
+ * components:
+ *  schemas:
+ *    Group:
+ *      title: Group
+ *      type: object
+ *      properties:
+ *        groupId:
+ *          type: string
+ *          readOnly: true
+ *        name:
+ *          type: string
+ *        comment:
+ *          *commentProperty
+ *        active:
+ *          type: boolean
+ *          default: true
+ *        project:
+ *          type: boolean
+ *          default: false
+ *        darken:
+ *          *darkenProperty
+ *        budgets:
+ *          type: array
  *      required:
  *        - groupId
  *        - name
