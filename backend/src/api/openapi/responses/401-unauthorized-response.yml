@@ -1,2 +1,0 @@
-x-template: &unauthorizedResponse
-  description: The request was unauthorized.

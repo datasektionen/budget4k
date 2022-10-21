@@ -1,0 +1,37 @@
+components:
+  responses:
+    # 200
+    Ok:
+      description: The request was successful
+
+    # 204
+    NoContent:
+      description: The request was successful.
+
+    # 400
+    BadRequest:
+      description: The request was invalid and could/would not be processed.
+
+    # 401
+    Unauthorized:
+      description: The request was unauthorized.
+
+    # 403
+    Forbidden:
+      description: The request was forbidden.
+
+    # 404
+    NotFound:
+      description: The requested resource could not be found.
+
+    # 409
+    Conflict:
+      description: The request resulted in a conflict.
+
+    # 500
+    ServerError:
+      description: The server has encountered a situation it does not know how to handle.
+
+    # 501
+    NotImplemented:
+      description: The request method is not supported by the server and cannot be handled.

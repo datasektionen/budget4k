@@ -1,0 +1,9 @@
+components:
+  requestBodies:
+    groupBody:
+      description: The group request body.
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/Group"

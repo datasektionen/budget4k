@@ -1,5 +1,6 @@
 import { Request, Response } from "express";
 import { StatusCodes } from "http-status-codes";
+import { Group } from "src/types";
 import {
     createGroup,
     findAllGroups,
@@ -7,7 +8,6 @@ import {
     removeGroup,
     updateGroup
 } from "../../../data/db-access";
-import { Group } from "src/types";
 import { errorResponse, successResponse } from "../../../util";
 
 export const getAllGroups = async (req: Request, res: Response) => {
@@ -40,29 +40,6 @@ export const getGroupById = async (req: Request, res: Response) => {
         return errorResponse(req, res, error, StatusCodes.INTERNAL_SERVER_ERROR);
     }
 };
-
-// export const getGroupBudgets = async (req: Request, res: Response) => {
-//     try {
-//         const groupId = req.params?.groupId;
-//         const onlyActive = req.query?.active === "true" ?? false;
-//         const service = new GetGroupService();
-//         const data = await readGroupBudgets(groupId, onlyActive);
-
-//         return successResponse(
-//             req,
-//             res,
-//             data,
-//             "All budgets available for this group"
-//         );
-//     } catch (error) {
-//         return errorResponse(
-//             req,
-//             res,
-//             error,
-//             StatusCodes.INTERNAL_SERVER_ERROR
-//         );
-//     }
-// };
 
 export const postGroup = async (req: Request, res: Response) => {
     try {

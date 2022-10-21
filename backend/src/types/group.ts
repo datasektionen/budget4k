@@ -10,7 +10,6 @@ import { Budget } from "src/types/budget";
  *      properties:
  *        groupId:
  *          type: string
- *          readOnly: true
  *        name:
  *          type: string
  *        comment:
@@ -30,9 +29,6 @@ import { Budget } from "src/types/budget";
  *      required:
  *        - groupId
  *        - name
- *        - active
- *        - project
- *        - darken
  */
 
 /**
@@ -45,7 +41,6 @@ import { Budget } from "src/types/budget";
  *      properties:
  *        groupId:
  *          type: string
- *          readOnly: true
  *          example: "drek"
  *        name:
  *          type: string
@@ -63,9 +58,6 @@ import { Budget } from "src/types/budget";
  *      required:
  *        - groupId
  *        - name
- *        - active
- *        - project
- *        - darken
  */
 export interface Group {
     groupId: string;
