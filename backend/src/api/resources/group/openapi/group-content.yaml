@@ -1,0 +1,15 @@
+x-template: &groupContent
+  application/json:
+    schema:
+      type: object
+      properties:
+        status:
+          $ref: "#/components/properties/status"
+        detail:
+          $ref: "#/components/properties/detail"
+        timestamp:
+          $ref: "#/components/properties/timestamp"
+        path:
+          $ref: "#/components/properties/path"
+        data:
+          $ref: "#/components/schemas/Group"

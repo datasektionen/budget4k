@@ -5,7 +5,7 @@ import { Budget } from "src/types/budget";
  * components:
  *  schemas:
  *    GroupWithBudget:
- *      title: Group
+ *      title: GroupWithBudget
  *      type: object
  *      properties:
  *        groupId:
@@ -46,8 +46,10 @@ import { Budget } from "src/types/budget";
  *        groupId:
  *          type: string
  *          readOnly: true
+ *          example: "drek"
  *        name:
  *          type: string
+ *          example: "D-rektoratet"
  *        comment:
  *          *commentProperty
  *        active:
@@ -58,8 +60,6 @@ import { Budget } from "src/types/budget";
  *          default: false
  *        darken:
  *          *darkenProperty
- *        budgets:
- *          type: array
  *      required:
  *        - groupId
  *        - name

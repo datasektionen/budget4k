@@ -1,2 +1,3 @@
 x-template: &commentProperty
   type: string
+  example: "A usefull comment"
