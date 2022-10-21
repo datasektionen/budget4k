@@ -6,7 +6,7 @@ export const groupRouter = Router();
 
 /**
  * @openapi
- * /v1/group:
+ * /v1/groups:
  *  get:
  *    summary: Returns all the groups.
  *    operationId: getGroups
@@ -23,7 +23,7 @@ groupRouter.get("/", getAllGroups);
 
 /**
  * @openapi
- * /v1/group:
+ * /v1/groups:
  *  post:
  *    summary: Creates a new group.
  *    operationId: createGroup
@@ -48,13 +48,13 @@ groupRouter.post("/", postGroup);
 
 /**
  * @openapi
- * /v1/group/{groupId}:
+ * /v1/groups/{groupId}:
  *  get:
  *    summary: Returns a specific group
  *    operationId: getGroup
  *    responses:
  *      200:
- *        description: A list containing all groups.
+ *        description: Returns the group
  *        content: *groupContent
  *      404:
  *        $ref: "#/components/responses/NotFound"
@@ -67,7 +67,7 @@ groupRouter.get("/:groupId", getGroupById);
 
 /**
  * @openapi
- * /v1/group/{groupId}:
+ * /v1/groups/{groupId}:
  *  put:
  *    summary: Updates a group.
  *    operationId: updateGroup
@@ -94,7 +94,7 @@ groupRouter.put("/:groupId", putGroup);
 
 /**
  * @openapi
- * /v1/group/{groupId}:
+ * /v1/groups/{groupId}:
  *  delete:
  *    summary: Deletes a group and it's budgets.
  *    operationId: deleteGroup
@@ -116,7 +116,7 @@ groupRouter.delete("/:groupId", deleteGroup);
 
 /**
  * @openapi
- * /v1/group/{groupId}/budget:
+ * /v1/groups/{groupId}/budget:
  *  get:
  *    summary: Returns a group and its budgets in the specified time period.
  *    operationId: getGroupBudget

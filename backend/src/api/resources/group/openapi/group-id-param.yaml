@@ -1,5 +1,5 @@
 paths:
-  /v1/group/{groupId}:
+  /v1/groups/{groupId}:
     parameters:
       - in: path
         name: groupId

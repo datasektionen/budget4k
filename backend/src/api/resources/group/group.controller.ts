@@ -32,7 +32,7 @@ export const getGroupById = async (req: Request, res: Response) => {
             return errorResponse(
                 req,
                 res,
-                `No group with '${groupId}' exists`,
+                `No group with the id, '${groupId}', exists`,
                 StatusCodes.NOT_FOUND
             );
         }

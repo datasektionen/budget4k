@@ -8,9 +8,9 @@ api.get("/", (req: express.Request, res: express.Response) => {
     });
 });
 
-api.use("/group", groupRouter);
-api.use("/budget", budgetRouter);
-api.use("/costCenter", costCenterRouter);
-api.use("/budgetLine", budgetLineRouter);
+api.use("/groups", groupRouter);
+api.use("/budgets", budgetRouter);
+api.use("/costCenters", costCenterRouter);
+api.use("/budgetLines", budgetLineRouter);
 
 export default api;
