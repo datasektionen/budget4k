@@ -9,6 +9,7 @@ export const findAllBudgetLines = async () => {
 export const findBudgetLineById = async (id: number) => {
     return await prisma.budgetLine.findUnique({ where: { budgetLineId: id } });
 };
+
 export const createBudgetLine = async (data: INewBudgetLine) => {
     return await prisma.budgetLine.create({ data: data });
 };
@@ -23,8 +24,6 @@ export const updateBudgetLine = async (
     });
 };
 
-export const removeBudgetLine = async (
-    where: Prisma.BudgetLineDeleteArgs["where"]
-) => {
+export const removeBudgetLine = async (where: Prisma.BudgetLineDeleteArgs["where"]) => {
     return await prisma.budgetLine.delete({ where: where });
 };

@@ -1,2 +1,0 @@
-x-template: &notImplementedResponse
-  description: The request method is not supported by the server and cannot be handled. 

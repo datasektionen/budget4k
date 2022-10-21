@@ -1,2 +1,0 @@
-x-template: &notFoundResponse
-  description: The requested resource could not be found.

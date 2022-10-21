@@ -9,6 +9,7 @@ export const findAllCostCenters = async () => {
 export const findCostCenterById = async (id: number) => {
     return await prisma.costCenter.findUnique({ where: { costCenterId: id } });
 };
+
 export const createCostCenter = async (data: INewCostCenter) => {
     return await prisma.costCenter.create({ data: data });
 };
@@ -23,8 +24,6 @@ export const updateCostCenter = async (
     });
 };
 
-export const removeCostCenter = async (
-    where: Prisma.CostCenterDeleteArgs["where"]
-) => {
+export const removeCostCenter = async (where: Prisma.CostCenterDeleteArgs["where"]) => {
     return await prisma.costCenter.delete({ where: where });
 };

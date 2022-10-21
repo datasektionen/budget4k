@@ -42,3 +42,5 @@ export interface Budget {
 }
 
 export type INewBudget = Omit<Budget, "budgetId" | "costCenters">;
+
+export type GetBudgetOptions = { from?: Date; to?: Date };

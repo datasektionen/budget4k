@@ -1,2 +1,0 @@
-x-template: &forbiddenResponse
-  description: The request was forbidden.

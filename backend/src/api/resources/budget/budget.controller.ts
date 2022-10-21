@@ -16,12 +16,7 @@ export const getAllBudgets = async (req: Request, res: Response) => {
 
         return successResponse(req, res, data, "All budgets");
     } catch (error) {
-        return errorResponse(
-            req,
-            res,
-            error,
-            StatusCodes.INTERNAL_SERVER_ERROR
-        );
+        return errorResponse(req, res, error, StatusCodes.INTERNAL_SERVER_ERROR);
     }
 };
 
@@ -32,12 +27,7 @@ export const getBudgetById = async (req: Request, res: Response) => {
         const data = await findBudgetById(budgetId);
 
         if (data) {
-            return successResponse(
-                req,
-                res,
-                data,
-                `Budget with id '${budgetId}'`
-            );
+            return successResponse(req, res, data, `Budget with id '${budgetId}'`);
         } else {
             return errorResponse(
                 req,
@@ -47,12 +37,7 @@ export const getBudgetById = async (req: Request, res: Response) => {
             );
         }
     } catch (error) {
-        return errorResponse(
-            req,
-            res,
-            error,
-            StatusCodes.INTERNAL_SERVER_ERROR
-        );
+        return errorResponse(req, res, error, StatusCodes.INTERNAL_SERVER_ERROR);
     }
 };
 
@@ -64,12 +49,7 @@ export const postBudget = async (req: Request, res: Response) => {
 
         return successResponse(req, res, budget, "Created budget");
     } catch (error) {
-        return errorResponse(
-            req,
-            res,
-            error,
-            StatusCodes.INTERNAL_SERVER_ERROR
-        );
+        return errorResponse(req, res, error, StatusCodes.INTERNAL_SERVER_ERROR);
     }
 };
 
@@ -84,12 +64,7 @@ export const putBudget = async (req: Request, res: Response) => {
 
         return successResponse(req, res, data, "Created budget");
     } catch (error) {
-        return errorResponse(
-            req,
-            res,
-            error,
-            StatusCodes.INTERNAL_SERVER_ERROR
-        );
+        return errorResponse(req, res, error, StatusCodes.INTERNAL_SERVER_ERROR);
     }
 };
 
@@ -101,11 +76,6 @@ export const deleteBudget = async (req: Request, res: Response) => {
 
         return successResponse(req, res, data, "Created budget");
     } catch (error) {
-        return errorResponse(
-            req,
-            res,
-            error,
-            StatusCodes.INTERNAL_SERVER_ERROR
-        );
+        return errorResponse(req, res, error, StatusCodes.INTERNAL_SERVER_ERROR);
     }
 };

@@ -1,5 +1,6 @@
 import { Request, Response } from "express";
 import { StatusCodes } from "http-status-codes";
+import { Group } from "src/types";
 import {
     createGroup,
     findAllGroups,
@@ -7,7 +8,6 @@ import {
     removeGroup,
     updateGroup
 } from "../../../data/db-access";
-import { Group } from "src/types";
 import { errorResponse, successResponse } from "../../../util";
 
 export const getAllGroups = async (req: Request, res: Response) => {
@@ -16,12 +16,7 @@ export const getAllGroups = async (req: Request, res: Response) => {
 
         return successResponse(req, res, data, "All groups");
     } catch (error) {
-        return errorResponse(
-            req,
-            res,
-            error,
-            StatusCodes.INTERNAL_SERVER_ERROR
-        );
+        return errorResponse(req, res, error, StatusCodes.INTERNAL_SERVER_ERROR);
     }
 };
 
@@ -32,52 +27,19 @@ export const getGroupById = async (req: Request, res: Response) => {
         const data = await findGroupById(groupId);
 
         if (data) {
-            return successResponse(
-                req,
-                res,
-                data,
-                `Group with id '${groupId}'`
-            );
+            return successResponse(req, res, data, `Group with id '${groupId}'`);
         } else {
             return errorResponse(
                 req,
                 res,
-                `No group with '${groupId}' exists`,
+                `No group with the id, '${groupId}', exists`,
                 StatusCodes.NOT_FOUND
             );
         }
     } catch (error) {
-        return errorResponse(
-            req,
-            res,
-            error,
-            StatusCodes.INTERNAL_SERVER_ERROR
-        );
+        return errorResponse(req, res, error, StatusCodes.INTERNAL_SERVER_ERROR);
     }
 };
-
-// export const getGroupBudgets = async (req: Request, res: Response) => {
-//     try {
-//         const groupId = req.params?.groupId;
-//         const onlyActive = req.query?.active === "true" ?? false;
-//         const service = new GetGroupService();
-//         const data = await readGroupBudgets(groupId, onlyActive);
-
-//         return successResponse(
-//             req,
-//             res,
-//             data,
-//             "All budgets available for this group"
-//         );
-//     } catch (error) {
-//         return errorResponse(
-//             req,
-//             res,
-//             error,
-//             StatusCodes.INTERNAL_SERVER_ERROR
-//         );
-//     }
-// };
 
 export const postGroup = async (req: Request, res: Response) => {
     try {
@@ -92,12 +54,7 @@ export const postGroup = async (req: Request, res: Response) => {
 
         return successResponse(req, res, data, "Group created");
     } catch (error) {
-        return errorResponse(
-            req,
-            res,
-            error,
-            StatusCodes.INTERNAL_SERVER_ERROR
-        );
+        return errorResponse(req, res, error, StatusCodes.INTERNAL_SERVER_ERROR);
     }
 };
 
@@ -114,12 +71,7 @@ export const putGroup = async (req: Request, res: Response) => {
 
         return successResponse(req, res, data, "Group updated");
     } catch (error) {
-        return errorResponse(
-            req,
-            res,
-            error,
-            StatusCodes.INTERNAL_SERVER_ERROR
-        );
+        return errorResponse(req, res, error, StatusCodes.INTERNAL_SERVER_ERROR);
     }
 };
 
@@ -131,11 +83,6 @@ export const deleteGroup = async (req: Request, res: Response) => {
 
         return successResponse(req, res, data, "Group deleted");
     } catch (error) {
-        return errorResponse(
-            req,
-            res,
-            error,
-            StatusCodes.INTERNAL_SERVER_ERROR
-        );
+        return errorResponse(req, res, error, StatusCodes.INTERNAL_SERVER_ERROR);
     }
 };

@@ -1,0 +1,10 @@
+paths:
+  /v1/groups/{groupId}:
+    parameters:
+      - in: path
+        name: groupId
+        schema:
+          type: string
+        required: true
+        description: The unique id for the group.
+        example: drek

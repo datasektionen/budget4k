@@ -1,2 +1,0 @@
-x-template: &noContentResponse
-  description: The request was successful.

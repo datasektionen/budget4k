@@ -8,6 +8,7 @@ export const findAllGroups = async () => {
 export const findGroupById = async (id: string) => {
     return await prisma.group.findUnique({ where: { groupId: id } });
 };
+
 export const createGroup = async (data: INewGroup) => {
     return await prisma.group.create({ data: data });
 };
