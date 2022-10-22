@@ -1,26 +1,35 @@
 components:
   requestBodies:
-    budgetPutBody:
-      description: The budget request body.
+    BudgetPutBody:
+      description: The request body for updating an existing budget.
       required: true
       content:
         application/json:
           schema:
-            $ref: "#/components/schemas/Budget"
+            title: BudgetPutBody
+            type: object
+            properties:
+              budgetId: *idProperty
+              comment: *commentProperty
+              validFrom: *dateProperty
+              validTo: *dateProperty
+              groupId: *groupIdProperty
+            required: 
+              - budgetId
     
-    budgetPostBody:
-      description: The budget request body.
+    BudgetPostBody:
+      description: The request body for creating a new budget.
       required: true
       content:
         application/json:
           schema:
-            comment:
-              *commentProperty
-            validFrom:
-              type: string
-              format: date
-            validTo:
-              type: string
-              format: date
-            groupId:
-              type: string
+            title: BudgetPostBody
+            type: object
+            properties:
+              comment: *commentProperty
+              validFrom: *dateProperty
+              validTo: *dateProperty
+              groupId: *groupIdProperty
+            required:
+              - validFrom
+              - groupId

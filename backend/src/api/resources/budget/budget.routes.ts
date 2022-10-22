@@ -34,7 +34,7 @@ budgetRouter.get("/", getAllBudgets);
  *    summary: Creates a new budget.
  *    operationId: createBudget
  *    requestBody:
- *      $ref: "#/components/requestBodies/budgetPostBody"
+ *      $ref: "#/components/requestBodies/BudgetPostBody"
  *    responses:
  *      200:
  *        description: Successfully created the budget.
@@ -57,7 +57,7 @@ budgetRouter.post("/", postBudget);
  * @openapi
  * /v1/budgets/{budgetId}:
  *  get:
- *    summary: Returns a specific budget
+ *    summary: Returns a specific budget.
  *    operationId: getBudget
  *    responses:
  *      200:
@@ -80,7 +80,7 @@ budgetRouter.get("/:budgetId(\\d+)", getBudgetById);
  *    summary: Updates a budget.
  *    operationId: updateBudget
  *    requestBody:
- *      $ref: "#/components/requestBodies/budgetBody"
+ *      $ref: "#/components/requestBodies/BudgetPutBody"
  *    responses:
  *      200:
  *        description: The budget was sucessufully updated.

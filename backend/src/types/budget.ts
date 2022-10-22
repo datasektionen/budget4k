@@ -8,18 +8,11 @@ import { CostCenter } from "src/types/cost-center";
  *      title: BudgetWithCostCenter
  *      type: object
  *      properties:
- *        budgetId:
- *          *idProperty
- *        comment:
- *          *commentProperty
- *        validFrom:
- *          type: string
- *          format: date
- *        validTo:
- *          type: string
- *          format: date
- *        groupId:
- *          type: string
+ *        budgetId: *idProperty
+ *        comment: *commentProperty
+ *        validFrom: *dateProperty
+ *        validTo: *dateProperty
+ *        groupId: *groupIdProperty
  *        costCenters:
  *          type: array
  *          items:
@@ -39,18 +32,11 @@ import { CostCenter } from "src/types/cost-center";
  *      title: Budget
  *      type: object
  *      properties:
- *        budgetId:
- *          *idProperty
- *        comment:
- *          *commentProperty
- *        validFrom:
- *          type: string
- *          format: date
- *        validTo:
- *          type: string
- *          format: date
- *        groupId:
- *          type: string
+ *        budgetId: *idProperty
+ *        comment: *commentProperty
+ *        validFrom: *dateProperty
+ *        validTo: *dateProperty
+ *        groupId: *groupIdProperty
  *      required:
  *        - budgetId
  *        - name

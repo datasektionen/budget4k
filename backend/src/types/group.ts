@@ -8,20 +8,17 @@ import { Budget } from "src/types/budget";
  *      title: GroupWithBudget
  *      type: object
  *      properties:
- *        groupId:
- *          type: string
+ *        groupId: *groupIdProperty
  *        name:
  *          type: string
- *        comment:
- *          *commentProperty
+ *        comment: *commentProperty
  *        active:
  *          type: boolean
  *          default: true
  *        project:
  *          type: boolean
  *          default: false
- *        darken:
- *          *darkenProperty
+ *        darken: *darkenProperty
  *        budgets:
  *          type: array
  *          items:
