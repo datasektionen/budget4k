@@ -1,0 +1,4 @@
+x-template: &expenseProperty
+  type: decimal
+  default: 0
+  example: 1337

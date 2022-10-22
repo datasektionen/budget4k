@@ -1,0 +1,4 @@
+x-template: &incomeProperty
+  type: decimal
+  default: 0
+  example: 1337

@@ -1,0 +1,3 @@
+x-template: &budgetLineNameProperty
+  type: string
+  example: Fika

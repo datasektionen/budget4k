@@ -6,30 +6,17 @@
  *      title: BudgetLine
  *      type: object
  *      properties:
- *        budgetLineId:
- *          *idProperty
- *        name:
- *          type: string
- *        comment:
- *          *commentProperty
- *        income:
- *          type: number
- *          default: 0
- *        expense:
- *          type: number
- *          default: 0
- *        validFrom:
- *          *dateProperty
- *        validTo:
- *          *dateProperty
- *        editDate:
- *          *dateProperty
+ *        budgetLineId: *idProperty
+ *        name: *budgetLineNameProperty
+ *        income: *incomeProperty
+ *        expense: *expenseProperty
+ *        comment: *commentProperty
+ *        editDate: *dateProperty
  *        editedBy:
  *          type: string
- *        darken:
- *          *darkenProperty
- *        costCenterId:
- *          type: integer
+ *          example: Ture Teknolog
+ *        darken: *darkenProperty
+ *        costCenterId: *idProperty
  *      required:
  *        - budgetLineId
  *        - name
