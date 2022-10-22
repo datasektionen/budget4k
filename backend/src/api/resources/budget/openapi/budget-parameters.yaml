@@ -1,0 +1,10 @@
+paths:
+  /v1/budgets/{budgetId}:
+    parameters:
+      - in: path
+        name: budgetId
+        schema:
+          type: string
+        required: true
+        description: The unique id for the budget.
+        example: 123

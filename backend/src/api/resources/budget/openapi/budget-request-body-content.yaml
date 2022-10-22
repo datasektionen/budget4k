@@ -1,0 +1,26 @@
+components:
+  requestBodies:
+    budgetPutBody:
+      description: The budget request body.
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/Budget"
+    
+    budgetPostBody:
+      description: The budget request body.
+      required: true
+      content:
+        application/json:
+          schema:
+            comment:
+              *commentProperty
+            validFrom:
+              type: string
+              format: date
+            validTo:
+              type: string
+              format: date
+            groupId:
+              type: string
