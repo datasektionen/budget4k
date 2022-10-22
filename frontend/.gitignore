@@ -1,0 +1,15 @@
+node_modules
+
+/.cache
+/build
+/public/build
+.env
+*.log
+
+# Yarn
+.yarn/unplugged
+.yarn/build-state.yml
+.yarn/*
+!.yarn/releases
+!.yarn/plugins
+.pnp.*
