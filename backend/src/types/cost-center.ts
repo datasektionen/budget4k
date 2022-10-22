@@ -4,24 +4,39 @@ import { BudgetLine } from "src/types/budget-line";
  * @openapi
  * components:
  *  schemas:
- *    CostCenter:
+ *    CostCenterWithBudgetLines:
  *      title: CostCenter
  *      type: object
  *      properties:
- *        costCenterId:
- *          *idProperty
- *        name:
- *          type: string
- *        comment:
- *          *commentProperty
- *        darken:
- *          *darkenProperty
- *        budgetId:
- *          type: integer
+ *        costCenterId: *idProperty
+ *        name: *costCenterNameProperty
+ *        comment: *commentProperty
+ *        darken: *darkenProperty
+ *        budgetId: *idProperty
  *        budgetLines:
  *          type: array
  *          items:
  *              $ref: '#/components/schemas/BudgetLine'
+ *      required:
+ *        - costCenterId
+ *        - name
+ *        - darken
+ *        - budgetId
+ */
+
+/**
+ * @openapi
+ * components:
+ *  schemas:
+ *    CostCenter:
+ *      title: CostCenter
+ *      type: object
+ *      properties:
+ *        costCenterId: *idProperty
+ *        name: *costCenterNameProperty
+ *        comment: *commentProperty
+ *        darken: *darkenProperty
+ *        budgetId: *idProperty
  *      required:
  *        - costCenterId
  *        - name

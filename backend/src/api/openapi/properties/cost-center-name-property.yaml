@@ -1,0 +1,3 @@
+x-template: &costCenterNameProperty
+  type: string
+  example: Allmänt

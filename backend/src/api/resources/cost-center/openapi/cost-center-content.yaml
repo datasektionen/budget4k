@@ -1,0 +1,35 @@
+components:
+  content:
+    CostCenterContent:
+      application/json:
+        schema:
+          type: object
+          properties:
+            status:
+              $ref: "#/components/properties/status"
+            detail:
+              $ref: "#/components/properties/detail"
+            timestamp:
+              $ref: "#/components/properties/timestamp"
+            path:
+              $ref: "#/components/properties/path"
+            data:
+              $ref: "#/components/schemas/CostCenter"
+
+    CostCentersContent:
+      application/json:
+        schema:
+          type: object
+          properties:
+            status:
+              $ref: "#/components/properties/status"
+            detail:
+              $ref: "#/components/properties/detail"
+            timestamp:
+              $ref: "#/components/properties/timestamp"
+            path:
+              $ref: "#/components/properties/path"
+            data:
+              type: array
+              items:
+                $ref: "#/components/schemas/CostCenter"
