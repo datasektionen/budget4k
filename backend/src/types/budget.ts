@@ -4,22 +4,15 @@ import { CostCenter } from "src/types/cost-center";
  * @openapi
  * components:
  *  schemas:
- *    Budget:
- *      title: Budget
+ *    BudgetWithCostCenter:
+ *      title: BudgetWithCostCenter
  *      type: object
  *      properties:
- *        budgetId:
- *          *idProperty
- *        year:
- *          type: string
- *        active:
- *          type: boolean
- *        comment:
- *          *commentProperty
- *        darken:
- *          *darkenProperty
- *        groupId:
- *          type: string
+ *        budgetId: *idProperty
+ *        comment: *commentProperty
+ *        validFrom: *dateProperty
+ *        validTo: *dateProperty
+ *        groupId: *groupIdProperty
  *        costCenters:
  *          type: array
  *          items:
@@ -27,9 +20,27 @@ import { CostCenter } from "src/types/cost-center";
  *      required:
  *        - budgetId
  *        - name
- *        - year
- *        - active
- *        - darken
+ *        - validFrom
+ *        - groupId
+ */
+
+/**
+ * @openapi
+ * components:
+ *  schemas:
+ *    Budget:
+ *      title: Budget
+ *      type: object
+ *      properties:
+ *        budgetId: *idProperty
+ *        comment: *commentProperty
+ *        validFrom: *dateProperty
+ *        validTo: *dateProperty
+ *        groupId: *groupIdProperty
+ *      required:
+ *        - budgetId
+ *        - name
+ *        - validFrom
  *        - groupId
  */
 export interface Budget {
