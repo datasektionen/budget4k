@@ -1,0 +1,10 @@
+paths:
+  /v1/costCenters/{costCenterId}:
+    parameters:
+      - in: path
+        name: costCenterId
+        schema:
+          type: integer
+        required: true
+        description: The unique id for the cost center.
+        example: 123

@@ -1,0 +1,32 @@
+components:
+  requestBodies:    
+    CostCenterPostBody:
+      description: The request body for creating a new cost center.
+      required: true
+      content:
+        application/json:
+          schema:
+            title: CostCenterPostBody
+            type: object
+            properties:
+              name: *costCenterNameProperty
+              comment: *commentProperty
+              darken: *darkenProperty
+              budgetId: *idProperty
+            required:
+              - name
+              - budgetId
+    
+    CostCenterPutBody:
+      description: The request body for updating an existing cost center.
+      required: true
+      content:
+        application/json:
+          schema:
+            title: CostCenterPutBody
+            type: object
+            properties:
+              name: *costCenterNameProperty
+              comment: *commentProperty
+              darken: *darkenProperty
+              budgetId: *idProperty
