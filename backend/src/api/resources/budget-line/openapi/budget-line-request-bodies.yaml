@@ -1,0 +1,36 @@
+components:
+  requestBodies:    
+    BudgetLinePostBody:
+      description: The request body for creating a new budget line.
+      required: true
+      content:
+        application/json:
+          schema:
+            title: BudgetLinePostBody
+            type: object
+            properties:
+              name: *budgetLineNameProperty
+              income: *incomeProperty
+              expense: *expenseProperty
+              comment: *commentProperty
+              darken: *darkenProperty
+              costCenterId: *idProperty
+            required:
+              - name
+              - costCenterId
+    
+    BudgetLinePutBody:
+      description: The request body for updating an existing budget line.
+      required: true
+      content:
+        application/json:
+          schema:
+            title: BudgetLinePutBody
+            type: object
+            properties:
+              name: *budgetLineNameProperty
+              income: *incomeProperty
+              expense: *expenseProperty
+              comment: *commentProperty
+              darken: *darkenProperty
+              costCenterId: *idProperty
